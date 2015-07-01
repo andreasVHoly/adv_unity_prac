@@ -24,20 +24,20 @@ public class PlayerScript : MonoBehaviour {
 		move = new Vector3(0,0,0);
 
 		if (inputX > 0){
-			move = new Vector3(speed.x,move.y,move.z);
+			move = new Vector3(speed.x,0,move.z);
 			print("pos x");
 		}
 		else if (inputX < 0){
-			move = new Vector3(-speed.x,move.y,move.z);
+			move = new Vector3(-speed.x,0,move.z);
 			print("neg x");
 		}
 
 		if (inputZ > 0){
-			move = new Vector3(move.x,move.y,speed.z);
+			move = new Vector3(move.x,0,speed.z);
 			print("pos y");
 		}
 		else if (inputZ < 0){
-			move = new Vector3(move.x,move.y,-speed.z);
+			move = new Vector3(move.x,0,-speed.z);
 			print("neg y");
 		}
 
