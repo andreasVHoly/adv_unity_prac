@@ -13,8 +13,9 @@ public class PlayerScript : MonoBehaviour {
 	private Vector3 move;
 
 	//the animator to handle the animations for the player
-	public Animator animator;
+	private Animator animator;
 
+	private HashScript hash;
 	//float value for the rotation on the vertical axis
 	private float rotationValue;
 
@@ -32,7 +33,7 @@ public class PlayerScript : MonoBehaviour {
 		charSpeed = new Vector3(7f,5f,7f);
 		//we set the mouse speed
 		mouseSpeed = new Vector3(3f,3f,3f);
-
+		hash = gameObject.GetComponent<HashScript>();
 		//this allows the mouse to go off the screen
 		Screen.lockCursor = true;
 
@@ -98,8 +99,10 @@ public class PlayerScript : MonoBehaviour {
 		//we now send this information through to the character controller
 		controller.Move(move * Time.deltaTime);
 
-
-		
+		//animator.SetFloat(hash.speedFloat, 5, damping, Time.deltaTime);
+		//animator.Play(hash.walkState);
+		//animator.Play("Walk");
+		animator.Play("Base Layer.test");
 		/*move = new Vector3(inputX,0,inputZ);
 
 		
