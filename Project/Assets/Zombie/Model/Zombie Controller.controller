@@ -7,7 +7,13 @@ AnimatorController:
   m_PrefabInternal: {fileID: 0}
   m_Name: Zombie Controller
   serializedVersion: 2
-  m_AnimatorParameters: []
+  m_AnimatorParameters:
+  - m_Name: Speed
+    m_Type: 1
+    m_DefaultFloat: 0
+    m_DefaultInt: 0
+    m_DefaultBool: 0
+    m_Controller: {fileID: 9100000}
   m_AnimatorLayers:
   - serializedVersion: 3
     m_Name: Base Layer
@@ -33,9 +39,9 @@ Transition:
   m_TransitionOffset: 0
   m_Conditions:
   - m_ConditionMode: 5
-    m_ConditionEvent: 
-    m_EventTreshold: 0
-    m_ExitTime: .875
+    m_ConditionEvent: Speed
+    m_EventTreshold: .100000001
+    m_ExitTime: .879999995
   m_Atomic: 1
   m_Solo: 0
   m_Mute: 1
@@ -53,7 +59,7 @@ Transition:
   m_TransitionOffset: 0
   m_Conditions:
   - m_ConditionMode: 5
-    m_ConditionEvent: 
+    m_ConditionEvent: Speed
     m_EventTreshold: 0
     m_ExitTime: .875
   m_Atomic: 1
@@ -73,7 +79,7 @@ Transition:
   m_TransitionOffset: 0
   m_Conditions:
   - m_ConditionMode: 5
-    m_ConditionEvent: 
+    m_ConditionEvent: Speed
     m_EventTreshold: 0
     m_ExitTime: .825581431
   m_Atomic: 1
@@ -92,9 +98,9 @@ Transition:
   m_TransitionDuration: .125
   m_TransitionOffset: 0
   m_Conditions:
-  - m_ConditionMode: 5
-    m_ConditionEvent: 
-    m_EventTreshold: 0
+  - m_ConditionMode: 3
+    m_ConditionEvent: Speed
+    m_EventTreshold: .100000001
     m_ExitTime: .875
   m_Atomic: 1
   m_Solo: 0
@@ -113,7 +119,7 @@ Transition:
   m_TransitionOffset: 0
   m_Conditions:
   - m_ConditionMode: 5
-    m_ConditionEvent: 
+    m_ConditionEvent: Speed
     m_EventTreshold: 0
     m_ExitTime: .825581431
   m_Atomic: 1
@@ -133,7 +139,7 @@ Transition:
   m_TransitionOffset: 0
   m_Conditions:
   - m_ConditionMode: 5
-    m_ConditionEvent: 
+    m_ConditionEvent: Speed
     m_EventTreshold: 0
     m_ExitTime: .825581431
   m_Atomic: 1
@@ -153,7 +159,7 @@ Transition:
   m_TransitionOffset: 0
   m_Conditions:
   - m_ConditionMode: 5
-    m_ConditionEvent: 
+    m_ConditionEvent: Speed
     m_EventTreshold: 0
     m_ExitTime: .825581431
   m_Atomic: 1
@@ -173,7 +179,7 @@ Transition:
   m_TransitionOffset: 0
   m_Conditions:
   - m_ConditionMode: 5
-    m_ConditionEvent: 
+    m_ConditionEvent: Speed
     m_EventTreshold: 0
     m_ExitTime: .875
   m_Atomic: 1
@@ -193,7 +199,7 @@ Transition:
   m_TransitionOffset: 0
   m_Conditions:
   - m_ConditionMode: 5
-    m_ConditionEvent: 
+    m_ConditionEvent: Speed
     m_EventTreshold: 0
     m_ExitTime: .825581431
   m_Atomic: 1
@@ -213,7 +219,7 @@ Transition:
   m_TransitionOffset: 0
   m_Conditions:
   - m_ConditionMode: 5
-    m_ConditionEvent: 
+    m_ConditionEvent: Speed
     m_EventTreshold: 0
     m_ExitTime: .875
   m_Atomic: 1
@@ -329,9 +335,12 @@ StateMachine:
   m_ChildStateMachinePosition: []
   m_OrderedTransitions:
     data:
-      first: {fileID: 110240972}
+      first: {fileID: 110231836}
       second:
-      - {fileID: 110106270}
+      - {fileID: 110177830}
+      - {fileID: 110189016}
+      - {fileID: 110100216}
+      - {fileID: 110128252}
     data:
       first: {fileID: 110227032}
       second:
@@ -341,12 +350,18 @@ StateMachine:
       - {fileID: 110115502}
       - {fileID: 110129024}
     data:
-      first: {fileID: 110231836}
+      first: {fileID: 110259442}
+      second: []
+    data:
+      first: {fileID: 110207412}
+      second: []
+    data:
+      first: {fileID: 110261974}
+      second: []
+    data:
+      first: {fileID: 110240972}
       second:
-      - {fileID: 110177830}
-      - {fileID: 110189016}
-      - {fileID: 110100216}
-      - {fileID: 110128252}
+      - {fileID: 110106270}
   m_MotionSetCount: 1
   m_AnyStatePosition: {x: -300, y: -48, z: 0}
   m_ParentStateMachinePosition: {x: 800, y: 20, z: 0}
