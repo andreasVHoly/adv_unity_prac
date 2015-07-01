@@ -8,41 +8,46 @@ public class PlayerScript : MonoBehaviour {
 	public Vector3 speed;
 	public Vector3 move;
 
+
+	public Animator animator;
+
+	//tut
+	public float smoothing = 15f;
+	public float damping = 0.1f;
+
+
 	// Use this for initialization
 	void Start () {
+		animator = gameObject.GetComponent<Animator>();
 		controller = gameObject.GetComponent<CharacterController>();
 		if (speed == null){
 			speed = new Vector3(10,4,10);
 		}
 		move = new Vector3(0,0,0);
 	}
-	
-	// Update is called once per frame
-	void Update () {
+
+
+	void FixedUpdate(){
 		float inputX = Input.GetAxis("Horizontal");
 		float inputZ = Input.GetAxis("Vertical");
-		move = new Vector3(0,0,0);
 
-		if (inputX > 0){
-			move = new Vector3(speed.x,0,move.z);
-			print("pos x");
-		}
-		else if (inputX < 0){
-			move = new Vector3(-speed.x,0,move.z);
-			print("neg x");
-		}
 
-		if (inputZ > 0){
-			move = new Vector3(move.x,0,speed.z);
-			print("pos y");
-		}
-		else if (inputZ < 0){
-			move = new Vector3(move.x,0,-speed.z);
-			print("neg y");
+		move = new Vector3(inputX,0,inputZ);
+
+		
+		if (inputX != 0 || inputZ != 0){
+
+			Quaternion direction = Quaternion.LookRotation(move,Vector3.up);
+			
+			Quaternion rotation = Quaternion.Lerp(rigidbody.rotation, direction, smoothing*Time.deltaTime);
+			rigidbody.MoveRotation(rotation);
+			controller.Move(move);
 		}
 
-		controller.Move(move);
 
 
 	}
+
+
+
 }
