@@ -23,12 +23,12 @@ public class OrbitCamera : MonoBehaviour {
 		rotationSpeed = 0.01f;
 		hyp = Mathf.Sqrt((height*height) + (radius * radius));
 		angle = Mathf.Asin(radius/hyp);
-		print ("height " + height);
-		print ("hypotenuse " + hyp);
-		print ("radius " + radius);
-		print ("angle in r " + angle);
-		print ("angle in d " + angle*(180/Mathf.PI));
-		print ("new angle " + (angle*(180/Mathf.PI)+90));
+		//print ("height " + height);
+		//print ("hypotenuse " + hyp);
+		//print ("radius " + radius);
+		//print ("angle in r " + angle);
+		//print ("angle in d " + angle*(180/Mathf.PI));
+		//print ("new angle " + (angle*(180/Mathf.PI)+90));
 
 		transform.Rotate(angle*(180/Mathf.PI),0,0);
 		cam.farClipPlane = Vector3.Distance(target.transform.position, transform.position) + 100;

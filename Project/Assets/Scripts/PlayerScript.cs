@@ -3,6 +3,10 @@ using System.Collections;
 
 public class PlayerScript : MonoBehaviour {
 
+
+	public Camera fpsCam;
+
+
 	//the controller that we use to move the player
 	private CharacterController controller;
 	//the speed of the character
@@ -17,7 +21,8 @@ public class PlayerScript : MonoBehaviour {
 
 	private HashScript hash;
 	//float value for the rotation on the vertical axis
-	private float rotationValue;
+	private float rotationValueY;
+	private float rotationValueX;
 
 	//float for the jumping velocity calculations
 	private float jumpingVelocity;
@@ -43,7 +48,8 @@ public class PlayerScript : MonoBehaviour {
 		controller = gameObject.GetComponent<CharacterController>();
 		//default
 		move = new Vector3(0,0,0);
-		rotationValue = 0f;
+		rotationValueY = 0f;
+		rotationValueX = 0f;
 	}
 
 
@@ -52,11 +58,16 @@ public class PlayerScript : MonoBehaviour {
 	void rotatePlayer(float mouseX, float mouseY){
 		//we rotate on the horzontal axis
 		transform.Rotate(0,mouseX,0);
-		
+
+		//fpsCam.transform.Rotate(0,mouseX,0);
 		//we rotate on the vertical axis
-		rotationValue -= mouseY;
-		rotationValue = Mathf.Clamp(rotationValue, -60f, 60f);
-		Camera.main.transform.localRotation = Quaternion.Euler(rotationValue,0,0);
+
+
+		rotationValueY -= mouseY;
+		rotationValueY = Mathf.Clamp(rotationValueY, -90f, 90f);
+
+
+		fpsCam.transform.localRotation = Quaternion.Euler(rotationValueY,0,0);
 	}
 
 	void movePlayer(float moveX, float moveZ){
