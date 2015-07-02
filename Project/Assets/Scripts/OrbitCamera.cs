@@ -9,7 +9,7 @@ public class OrbitCamera : MonoBehaviour {
 	public float rotationSpeed;
 	//public Vector3 target;
 	public Transform target;
-	private Camera camera;
+	private Camera cam;
 
 
 	private float angle;
@@ -17,7 +17,7 @@ public class OrbitCamera : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		camera = this.gameObject.GetComponent<Camera>();
+		cam = this.gameObject.GetComponent<Camera>();
 		height = 200;
 		radius = 100;
 		rotationSpeed = 0.01f;
@@ -31,6 +31,7 @@ public class OrbitCamera : MonoBehaviour {
 		print ("new angle " + (angle*(180/Mathf.PI)+90));
 
 		transform.Rotate(angle*(180/Mathf.PI),0,0);
+		cam.farClipPlane = Vector3.Distance(target.transform.position, transform.position) + 100;
 		//transform.Rotate(angle,0,0, Space.Self);
 		//transform.Rotate(angle,0,0, Space.World);
 		//target = new Vector3(-149.0f, 0.63f, -2.56f);
@@ -57,10 +58,7 @@ public class OrbitCamera : MonoBehaviour {
 		transform.position = new Vector3(posX + targetX,transform.position.y, posZ + targetZ );
 	}
 
-	public void rotateView(){
-		Vector3 targetPos = new Vector3(target.transform.position.x,-1,target.transform.position.z);
-		transform.LookAt(targetPos);
-	}
+
 
 
 	// Update is called once per frame
@@ -72,7 +70,7 @@ public class OrbitCamera : MonoBehaviour {
 			//transform.Rotate(0,rotationSpeed * Time.deltaTime,0, Space.World);
 			//transform.RotateAround(target.position, Vector3.up, rotationSpeed * Time.deltaTime);
 			rotateCamera();
-			rotateView();
+			transform.LookAt(target.transform.position);
 		}
 		else{
 			print ("Please assign target first!");
