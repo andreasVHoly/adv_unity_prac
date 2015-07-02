@@ -22,7 +22,6 @@ public class PlayerScript : MonoBehaviour {
 	private HashScript hash;
 	//float value for the rotation on the vertical axis
 	private float rotationValueY;
-	private float rotationValueX;
 
 	//float for the jumping velocity calculations
 	private float jumpingVelocity;
@@ -49,7 +48,6 @@ public class PlayerScript : MonoBehaviour {
 		//default
 		move = new Vector3(0,0,0);
 		rotationValueY = 0f;
-		rotationValueX = 0f;
 	}
 
 

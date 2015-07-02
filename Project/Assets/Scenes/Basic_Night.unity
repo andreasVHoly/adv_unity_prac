@@ -1811,6 +1811,8 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 1303242670}
+  - 114: {fileID: 1303242671}
+  - 114: {fileID: 1303242672}
   m_Layer: 0
   m_Name: Scripts
   m_TagString: Untagged
@@ -1830,6 +1832,33 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 3
+--- !u!114 &1303242671
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1303242669}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 00e9714512575eb419eaef7bc5507436, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  camCycle: {fileID: 0}
+--- !u!114 &1303242672
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1303242669}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ef599c660e4297e449272a9ea003dc26, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cams:
+  - {fileID: 249071669}
+  - {fileID: 1274040755}
+  - {fileID: 1971819076}
 --- !u!1 &1350899819
 GameObject:
   m_ObjectHideFlags: 0
@@ -2505,7 +2534,6 @@ GameObject:
   - 92: {fileID: 1971819075}
   - 124: {fileID: 1971819074}
   - 45: {fileID: 1971819073}
-  - 114: {fileID: 1971819078}
   m_Layer: 0
   m_Name: FPS Cam
   m_TagString: MainCamera
@@ -2579,18 +2607,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1888801244}
   m_RootOrder: 18
---- !u!114 &1971819078
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1971819072}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 73f700ceae1d31c429305ddc9086b25e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  target: {fileID: 1888801244}
 --- !u!1 &1976452431
 GameObject:
   m_ObjectHideFlags: 0
