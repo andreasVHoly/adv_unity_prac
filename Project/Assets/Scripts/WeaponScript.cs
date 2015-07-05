@@ -5,8 +5,11 @@ public class WeaponScript : MonoBehaviour {
 
 
 
-
+	public Transform bullet;
 	private Transform hitObject;
+	public Transform bulletSpawn;
+
+	public float bulletSpeed;
 
 	public int damage;
 
@@ -25,6 +28,8 @@ public class WeaponScript : MonoBehaviour {
 
 
 	void shootWeapon(){
+
+
 		Transform cam = this.gameObject.GetComponent<PlayerScript>().fpsCam.transform;
 
 		print(cam);
@@ -37,9 +42,15 @@ public class WeaponScript : MonoBehaviour {
 			if (health != null){health.takeDamage(damage);}
 
 		}
-
-
-
+		/*var bulletObj = Instantiate(bullet) as Transform;
+		bulletObj.transform.position = bulletSpawn.transform.position;
+		bulletObj.transform.rotation = gameObject.transform.rotation;
+		bulletObj.transform.LookAt(hitObject.position);
+		bulletObj.rigidbody.AddForce(gameObject.transform.forward * bulletSpeed);*/
+		/*Debug.DrawLine (gameObject.transform.position, hitObject.transform.position);
+		var bulletObj = Instantiate(bullet, bulletSpawn.transform.position, gameObject.transform.rotation) as Transform;
+		bulletObj.transform.LookAt(hitObject.transform.position);
+		bulletObj.rigidbody.AddForce(gameObject.transform.forward * bulletSpeed);*/
 	}
 
 	void findShotObject(Ray raycast){
