@@ -13,6 +13,9 @@ public class PlayerScript : MonoBehaviour {
 	public Vector3 charSpeed;
 	//the speed at which the mouse rotates
 	public Vector3 mouseSpeed;
+
+	public Vector3 mouseDirection;
+	public Vector3 movementDirection;
 	//a vector we use to move the player
 	private Vector3 move;
 
@@ -25,6 +28,7 @@ public class PlayerScript : MonoBehaviour {
 	//float for the jumping velocity calculations
 	private float jumpingVelocity;
 
+	public bool jumping;
 	//tut
 	public float smoothing = 15f;
 	public float damping = 0.1f;
@@ -46,6 +50,7 @@ public class PlayerScript : MonoBehaviour {
 		//default
 		move = new Vector3(0,0,0);
 		rotationValueY = 0f;
+		jumping = false;
 	}
 
 
@@ -67,10 +72,7 @@ public class PlayerScript : MonoBehaviour {
 	}
 
 	void movePlayer(float moveX, float moveZ){
-		//we check if the player is trying to jump while on the floor, check for button press first as this will allow less checks on for the grounded flag
-		if(Input.GetButtonDown("Jump") && controller.isGrounded){
-			jumpingVelocity = charSpeed.y;
-		}
+
 		//we calculate in the gravity for the jump
 		jumpingVelocity += Physics.gravity.y * Time.deltaTime;
 		
@@ -85,42 +87,50 @@ public class PlayerScript : MonoBehaviour {
 		move = transform.rotation * move;
 	}
 
+
 	void Update(){
+		jumping = false;
+		movementDirection = new Vector3(Input.GetAxis("Horizontal"), 0,Input.GetAxis("Vertical")).normalized;
+		mouseDirection = new Vector3(Input.GetAxis("Mouse X"),Input.GetAxis("Mouse Y"), 0 );
+		//we check if the player is trying to jump while on the floor, check for button press first as this will allow less checks on for the grounded flag
+		if(Input.GetButtonDown("Jump") && controller.isGrounded){
+			jumpingVelocity = charSpeed.y;
+			//jumping = true;
+
+		}
+
+		if(controller.isGrounded){
+			animator.SetBool("Jump", false);
+		}
+		else{
+			animator.SetBool("Jump", true);
+		}
+
+
+		animator.SetFloat("Speed", movementDirection.magnitude);
+	}
+	//updates once per physics loop
+	void FixedUpdate(){
 		//we get the key movement of the player on the hor and ver axis
-		float moveX = Input.GetAxis("Horizontal");
-		float moveZ = Input.GetAxis("Vertical");
+		//float moveX = Input.GetAxis("Horizontal");
+		//float moveZ = Input.GetAxis("Vertical");
 		//we get the mouse movement of the player
-		float mouseX = Input.GetAxis("Mouse X");
-		float mouseY = Input.GetAxis("Mouse Y");
+		//float mouseX = Input.GetAxis("Mouse X");
+		//float mouseY = Input.GetAxis("Mouse Y");
 
 		//we calculate the rotation for the mouse movement
-		float rotationX = mouseX * mouseSpeed.x;
-		float rotationY = mouseY * mouseSpeed.y;
+		float rotationX = mouseDirection.x * mouseSpeed.x;
+		float rotationY = mouseDirection.y * mouseSpeed.y;
 		//send through the values to rotate
 		rotatePlayer(rotationX,rotationY);
 
 		//we send through the data to move the player
-		movePlayer(moveX,moveZ);
+		movePlayer(movementDirection.x,movementDirection.z);
 
 
 		//we now send this information through to the character controller
 		controller.Move(move * Time.deltaTime);
 
-		//animator.SetFloat(hash.speedFloat, 5, damping, Time.deltaTime);
-		//animator.Play(hash.walkState);
-		//animator.Play("Walk");
-		animator.Play("Base Layer.test");
-		/*move = new Vector3(inputX,0,inputZ);
-
-		
-		if (inputX != 0 || inputZ != 0){
-
-			Quaternion direction = Quaternion.LookRotation(move,Vector3.up);
-			
-			Quaternion rotation = Quaternion.Lerp(rigidbody.rotation, direction, smoothing*Time.deltaTime);
-			rigidbody.MoveRotation(rotation);
-			controller.Move(move);
-		}*/
 
 
 

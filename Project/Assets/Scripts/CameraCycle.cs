@@ -6,7 +6,7 @@ public class CameraCycle : MonoBehaviour {
 
 	
 	private int counter;
-	
+	public GameObject crosshair;
 	public Camera [] cams;
 	
 	
@@ -24,6 +24,13 @@ public class CameraCycle : MonoBehaviour {
 		for (int i = 0; i < 2; i++){
 			cams[i].enabled = false;
 		}
+
+		if (counter == 2){
+			crosshair.gameObject.SetActive(true);
+		}
+		else{
+			crosshair.gameObject.SetActive(false);
+		}
 		cams[counter].enabled = true;
 	}
 	
@@ -35,6 +42,10 @@ public class CameraCycle : MonoBehaviour {
 		for (int i = 0; i < 2; i++){
 			cams[i].enabled = false;
 		}
+		if (counter != 2){
+			crosshair.gameObject.SetActive(false);
+		}
+
 		cams[counter].enabled = true;
 	}
 }
