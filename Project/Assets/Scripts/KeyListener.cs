@@ -20,6 +20,10 @@ public class KeyListener : MonoBehaviour {
 		if (Input.GetKeyDown(KeyCode.C)){
 			camCycle.next();
 		}
+
+		if(Input.GetKeyDown(KeyCode.Escape)){
+			Application.Quit();
+		}
 	}
 	
 	
