@@ -32,7 +32,7 @@ public class WeaponScript : MonoBehaviour {
 
 		Transform cam = this.gameObject.GetComponent<PlayerScript>().fpsCam.transform;
 
-		print(cam);
+		//print(cam);
 		Ray shot = new Ray(cam.position,cam.forward);
 
 		findShotObject(shot);
