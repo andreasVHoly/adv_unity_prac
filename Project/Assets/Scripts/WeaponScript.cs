@@ -1,9 +1,12 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 public class WeaponScript : MonoBehaviour {
 
 
+
+	public Transform textObj;
 
 	public Transform bullet;
 	private Transform hitObject;
@@ -12,11 +15,12 @@ public class WeaponScript : MonoBehaviour {
 	public float bulletSpeed;
 
 	public int damage;
-
+	private Transform cam;
 
 	// Use this for initialization
 	void Start () {
 		hitObject = null;
+		cam = this.gameObject.GetComponent<PlayerScript>().fpsCam.transform;
 	}
 	
 	// Update is called once per frame
@@ -30,7 +34,7 @@ public class WeaponScript : MonoBehaviour {
 	void shootWeapon(){
 
 
-		Transform cam = this.gameObject.GetComponent<PlayerScript>().fpsCam.transform;
+
 
 		//print(cam);
 		Ray shot = new Ray(cam.position,cam.forward);
@@ -39,9 +43,14 @@ public class WeaponScript : MonoBehaviour {
 		print(hitObject);
 		if (hitObject != null){
 			HealthScript health = hitObject.GetComponent<HealthScript>();
+
 			if (health != null){health.takeDamage(damage);}
 
+			var text = textObj.gameObject.GetComponentInChildren<Text>();
+			text.text = hitObject.name;
+
 		}
+
 		/*var bulletObj = Instantiate(bullet) as Transform;
 		bulletObj.transform.position = bulletSpawn.transform.position;
 		bulletObj.transform.rotation = gameObject.transform.rotation;
@@ -54,6 +63,7 @@ public class WeaponScript : MonoBehaviour {
 	}
 
 	void findShotObject(Ray raycast){
+		hitObject = null;
 		RaycastHit[] objects =  Physics.RaycastAll(raycast);
 		int size = objects.Length;
 
