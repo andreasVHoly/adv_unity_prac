@@ -8,33 +8,45 @@ public class RandomObjectCreation : MonoBehaviour {
 	//needs to be assigned in unity
 	public Transform[] objects;
 
-	public Vector3 maxBound = new Vector3(439,10,470);
 
-	public Vector3 minBound = new Vector3(-151,1,-183);
 
-	public Vector3 position;
+
+
+
+	public float xMin, xMax, yMin, yMax, zMin, zMax;
 
 	public int amount;
 
+	public Transform parentObject;
 
+	private Vector3 position;
 
 
 	// Use this for initialization
 	void Start () {
-
 		if (amount == 0){
 			amount = 10;
 		}
-
+		xMin = -216;
+		xMax = 5;
+		yMin = 1;
+		yMax = 10;
+		zMin = -156;
+		zMax = 203;
+		spawnItems(amount);
 
 
 	}
 
 
 	Vector3 getPosition(){
-		return new Vector3(Random.Range(minBound.x,maxBound.x),
-		                   Random.Range(minBound.y,maxBound.y),
-		                   Random.Range(minBound.z,maxBound.z));
+		//float xPos = Random.Range(xMin,xMax);
+		//float yPos = Random.Range(yMin,yMax);
+		//float zPos = Random.Range(zMin,zMax);
+		//print("spawning at " + xPos + " , " + yPos + " , " + zPos);
+		return new Vector3(Random.Range(xMin,xMax), 
+		                   Random.Range(yMin,yMax),
+		                   Random.Range(zMin,zMax));
 	}
 
 
@@ -43,13 +55,16 @@ public class RandomObjectCreation : MonoBehaviour {
 
 		//var bulletObj = Instantiate(bullet, bulletSpawn.transform.position, gameObject.transform.rotation) as Transform;
 		for (int i = 0; i < no; i++){
-			var obj = Instantiate(objects[Random.Range(0,arraySize)], getPosition(), new Quaternion(0,0,0,1)) as Transform;
-			//obj.
+			int materialChoice = Random.Range(0, materials.Length);
+			int shapeChoice = Random.Range(0,arraySize);
+
+			var obj = Instantiate(objects[shapeChoice], getPosition(), new Quaternion(0,0,0,1)) as Transform;
+			obj.parent = parentObject;
+			obj.GetChild(0).renderer.material = materials[materialChoice];
+
+			//print("adding " + objects[shapeChoice].name + " with material " + materials[materialChoice].name);
 		}
 	}
 
-	// Update is called once per frame
-	void Update () {
-	
-	}
+
 }
