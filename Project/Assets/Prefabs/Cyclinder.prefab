@@ -114,6 +114,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   smoke: {fileID: 100000, guid: 44b3febaf5142a5429938ef0a0de2395, type: 2}
+  explosion: {fileID: 100000, guid: bd943c792514675e464dfc7a8c26d3e0, type: 2}
   health: 20
 --- !u!136 &13659842
 CapsuleCollider:

@@ -5,6 +5,7 @@ public class HealthScript : MonoBehaviour {
 
 
 	public GameObject smoke;
+	public GameObject explosion;
 
 	public int health = 100;
 
@@ -16,7 +17,9 @@ public class HealthScript : MonoBehaviour {
 			if (smoke != null){
 				var effect = Instantiate(smoke) as GameObject;
 				effect.transform.position = transform.position;
-
+				var effect2 = Instantiate(explosion) as GameObject;
+				effect2.transform.position = transform.position;
+				Destroy(effect2,1);
 			}
 			Destroy(gameObject);
 

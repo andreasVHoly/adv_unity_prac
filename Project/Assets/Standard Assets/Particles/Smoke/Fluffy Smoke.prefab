@@ -45,7 +45,7 @@ ParticleAnimator:
   Does Animate Color?: 1
   colorAnimation[0]:
     serializedVersion: 2
-    rgba: 8487297
+    rgba: 16053492
   colorAnimation[1]:
     serializedVersion: 2
     rgba: 1550280551
