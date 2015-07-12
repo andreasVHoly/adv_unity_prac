@@ -4,6 +4,26 @@ using System.Collections;
 public class OrbitCamera : MonoBehaviour {
 
 
+	struct circleEqu{
+		public float radius;
+		public Vector2 origin;
+		public float getX(float z){
+			//from : (x - a)^2 + (y - b)^2 = r^2 (2d circle equation)
+			//       ________________
+			// x = -/r^2 - (y - b)^2  + a
+
+			return Mathf.Sqrt(radius*radius - ((z - origin.y)*(z - origin.y)) ) + origin.x;
+		}
+
+		public float getZ(float x){
+
+			//from : (x - a)^2 + (y - b)^2 = r^2 (2d circle equation)
+			//       ________________
+			// y = -/r^2 - (x - a)^2  + b
+			return Mathf.Sqrt(radius*radius - ((x - origin.x)*(x - origin.x)) ) + origin.y;
+		}
+	}
+
 	public float height;
 	public float radius;
 	public float rotationSpeed;
@@ -11,22 +31,37 @@ public class OrbitCamera : MonoBehaviour {
 	public Transform target;
 	private Camera cam;
 
+	private circleEqu circle;
+
+
+
 
 	private float angle;
 	private float hyp;
 
 	// Use this for initialization
 	void Start () {
+
+
 		cam = this.gameObject.GetComponent<Camera>();
 		height = 200;
-		radius = 100;
-		transform.position = new Vector3(cam.transform.position.x, height ,cam.transform.position.z);
+		radius = 400;
+
+		//setting up the circle equation
+		circle.radius = radius;
+		circle.origin = new Vector2(target.position.x, target.position.z);
+		float z = circle.getZ(circle.origin.x+radius);
+		transform.position = new Vector3(circle.getX(z),height,z);
+
+		//transform.position = new Vector3(cam.transform.position.x, height ,cam.transform.position.z);
 		rotationSpeed = 0.01f;
 		hyp = Mathf.Sqrt((height*height) + (radius * radius));
 		angle = Mathf.Asin(radius/hyp);
 
 		transform.Rotate(angle*(180/Mathf.PI),0,0);
 		cam.farClipPlane = Vector3.Distance(target.transform.position, transform.position) + 100;
+
+
 
 	}
 
@@ -68,6 +103,7 @@ public class OrbitCamera : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
+		circle.origin = new Vector2(target.position.x, target.position.z);
 		//moveCamera();
 		rotateCamera();
 		transform.LookAt(target.transform.position);
@@ -78,7 +114,12 @@ public class OrbitCamera : MonoBehaviour {
 
 
 	public void recalibrateCamera(){
-		cam.transform.position = new Vector3(cam.transform.position.x, height ,cam.transform.position.z);
+		//setting up the circle equation
+		circle.radius = radius;
+		circle.origin = new Vector2(target.position.x, target.position.z);
+		float z = circle.getZ(circle.origin.x+radius);
+		transform.position = new Vector3(circle.getX(z),height,z);
+	
 		hyp = Mathf.Sqrt((height*height) + (radius * radius));
 		angle = Mathf.Asin(radius/hyp);
 		transform.Rotate(angle*(180/Mathf.PI),0,0);
