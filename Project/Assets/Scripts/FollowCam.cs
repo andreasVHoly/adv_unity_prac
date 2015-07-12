@@ -40,4 +40,18 @@ public class FollowCam : MonoBehaviour {
 	}
 
 
+	/*public void setValues(float _height, float _radius){
+		setHeight(_height);
+		setRadius(_radius);
+	}
+	
+	public void setHeight(float _radius){
+		this.radius = _radius;
+	}
+	
+	public void setRadius(float _radius){
+		this.radius = _radius;
+	}*/
+
+
 }

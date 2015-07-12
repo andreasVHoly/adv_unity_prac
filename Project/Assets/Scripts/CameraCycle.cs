@@ -5,9 +5,11 @@ public class CameraCycle : MonoBehaviour {
 	
 
 	
-	private int counter;
+	public int counter;
 	public GameObject crosshair;
 	public Camera [] cams;
+
+	public GameObject orbitCamUI;
 	
 	
 	// Use this for initialization
@@ -23,6 +25,13 @@ public class CameraCycle : MonoBehaviour {
 		}
 		for (int i = 0; i < 2; i++){
 			cams[i].enabled = false;
+		}
+
+		if (counter == 0){
+			orbitCamUI.gameObject.SetActive(true);
+
+		}else{
+			orbitCamUI.gameObject.SetActive(false);
 		}
 
 		if (counter == 2){

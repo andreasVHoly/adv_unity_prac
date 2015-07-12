@@ -20,23 +20,28 @@ public class OrbitCamera : MonoBehaviour {
 		cam = this.gameObject.GetComponent<Camera>();
 		height = 200;
 		radius = 100;
+		transform.position = new Vector3(cam.transform.position.x, height ,cam.transform.position.z);
 		rotationSpeed = 0.01f;
 		hyp = Mathf.Sqrt((height*height) + (radius * radius));
 		angle = Mathf.Asin(radius/hyp);
-		//print ("height " + height);
-		//print ("hypotenuse " + hyp);
-		//print ("radius " + radius);
-		//print ("angle in r " + angle);
-		//print ("angle in d " + angle*(180/Mathf.PI));
-		//print ("new angle " + (angle*(180/Mathf.PI)+90));
 
 		transform.Rotate(angle*(180/Mathf.PI),0,0);
 		cam.farClipPlane = Vector3.Distance(target.transform.position, transform.position) + 100;
-		//transform.Rotate(angle,0,0, Space.Self);
-		//transform.Rotate(angle,0,0, Space.World);
-		//target = new Vector3(-149.0f, 0.63f, -2.56f);
+
 	}
 
+
+	public void moveCamera(){
+		float distance = Vector3.Distance(target.transform.position, transform.position);
+		while (distance < radius){
+			transform.position = new Vector3(transform.position.x+1,transform.position.y,transform.position.z+1);
+			distance = Vector3.Distance(target.transform.position, transform.position);
+		}
+		while (distance > radius){
+			transform.position = new Vector3(transform.position.x-10,transform.position.y,transform.position.z-10);
+			distance = Vector3.Distance(target.transform.position, transform.position);
+		}
+	}
 
 	public void rotateCamera(){
 		float sinShift = Mathf.Sin(rotationSpeed);
@@ -63,17 +68,38 @@ public class OrbitCamera : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-		//transform.position = target.position + (transform.position - target.position).normalized * radius;
-		if (target != null){
-			//transform.position = new Vector3(target.position.x + radius, target.position.y + height, target.position.z + radius);
-			//transform.rotation.x = angle;
-			//transform.Rotate(0,rotationSpeed * Time.deltaTime,0, Space.World);
-			//transform.RotateAround(target.position, Vector3.up, rotationSpeed * Time.deltaTime);
-			rotateCamera();
-			transform.LookAt(target.transform.position);
-		}
-		else{
-			print ("Please assign target first!");
-		}
+		//moveCamera();
+		rotateCamera();
+		transform.LookAt(target.transform.position);
+
 	}
+
+
+
+
+	public void recalibrateCamera(){
+		cam.transform.position = new Vector3(cam.transform.position.x, height ,cam.transform.position.z);
+		hyp = Mathf.Sqrt((height*height) + (radius * radius));
+		angle = Mathf.Asin(radius/hyp);
+		transform.Rotate(angle*(180/Mathf.PI),0,0);
+		cam.farClipPlane = Vector3.Distance(target.transform.position, transform.position) + 100;
+
+	}
+
+	public void setValues(float _height, float _radius){
+		setHeight(_height);
+		setRadius(_radius);
+	}
+
+	public void setHeight(float _height){
+		this.height = _height;
+		recalibrateCamera();
+	}
+
+	public void setRadius(float _radius){
+		this.radius = _radius;
+		recalibrateCamera();
+	}
+
+
 }
