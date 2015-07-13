@@ -5,7 +5,8 @@ using UnityEngine.UI;
 public class WeaponScript : MonoBehaviour {
 
 
-
+	//the animator to handle the animations for the player
+	private Animator animator;
 	public Transform textObj;
 
 	public Transform bullet;
@@ -17,16 +18,37 @@ public class WeaponScript : MonoBehaviour {
 	public int damage;
 	private Transform cam;
 
+	private float reloadTime;
+	private float reload;
+	private bool reloading;
+
 	// Use this for initialization
 	void Start () {
 		hitObject = null;
 		cam = this.gameObject.GetComponent<PlayerScript>().fpsCam.transform;
+		//we get the animator component
+		animator = gameObject.GetComponent<Animator>();
+		reloading = false;
+		reloadTime = 3.08f;
+		reload = 0;
 	}
 	
 	// Update is called once per frame
 	void Update () {
+		reload += Time.deltaTime;
+		if (reload > reloadTime){
+			reloading = false;
+			animator.SetBool("Reloading",reloading);
+			reload =  0;
+		}
+
 		if (Input.GetButtonDown("Fire1")){
 			shootWeapon();
+		}
+
+		if (Input.GetKeyDown(KeyCode.R) && !reloading){
+			reloading = true;
+			animator.SetBool("Reloading",reloading);
 		}
 	}
 

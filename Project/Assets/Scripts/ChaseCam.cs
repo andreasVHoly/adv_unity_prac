@@ -14,9 +14,16 @@ public class ChaseCam : MonoBehaviour {
 	public float acceleration;
 	//speed we are currently travelling at
 	public float speed;
-	
+
+
+
+
 	//the distance away from the target when standing still
-	public float distance;
+	private float distance;
+	private float dMax;
+	private float dMin;
+	public float dRest;
+
 
 
 	public float height;
@@ -26,19 +33,41 @@ public class ChaseCam : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-
+		distance = 0;
+		dMax = dRest+15;
+		dMin = dRest+10;
+		transform.position = new Vector3(target.position.x, height, target.position.z-dRest);
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		float dist = Vector3.Distance(transform.position,target.position);
-		if (speed > initialSpeed && dist < distance){
+		distance = Vector3.Distance(transform.position,target.position);
+		/*if (speed > initialSpeed && dist < distance){
 			speed -= acceleration;
 		}
 		if (speed < maxSpeed && dist < distance){
 			speed += acceleration;
+		}*/
+
+
+		if (distance > dMax){
+			//speed = initialSpeed;
 		}
-		transform.position = new Vector3(target.position.x, height, target.position.z-distance);
+		if (distance >= dMin){
+			speed += acceleration;
+		}
+
+		if (distance <= dMin && speed > 0){
+			speed -= acceleration;
+		}
+
+		if (distance <= dRest){
+			//speed = 0;
+		}
+
+
+
+		//transform.position = new Vector3(target.position.x, height, target.position.z-distance);
 		transform.Translate(target.forward*speed);
 		//controller.Move(speed * Time.deltaTime);
 

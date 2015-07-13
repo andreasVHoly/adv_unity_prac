@@ -65,7 +65,7 @@ public class PlayerScript : MonoBehaviour {
 
 
 		rotationValueY -= mouseY;
-		rotationValueY = Mathf.Clamp(rotationValueY, -90f, 90f);
+		rotationValueY = Mathf.Clamp(rotationValueY, -80f, 30f);
 
 
 		fpsCam.transform.localRotation = Quaternion.Euler(rotationValueY,0,0);
@@ -100,10 +100,10 @@ public class PlayerScript : MonoBehaviour {
 		}
 
 		if(controller.isGrounded){
-			animator.SetBool("Jump", false);
+			animator.SetBool("Jumping", false);
 		}
 		else{
-			animator.SetBool("Jump", true);
+			animator.SetBool("Jumping", true);
 		}
 
 
