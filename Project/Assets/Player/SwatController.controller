@@ -247,6 +247,21 @@ State:
   m_IKOnFeet: 0
   m_Mirror: 0
   m_Tag: 
+--- !u!1102 &110205234
+State:
+  m_ObjectHideFlags: 3
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: reloadgun
+  m_Speed: 1
+  m_CycleOffset: 0
+  m_Motions:
+  - {fileID: 7400000, guid: 6a0eb7a1efa53cb4a9faa09520fe96e6, type: 2}
+  m_ParentStateMachine: {fileID: 110754274}
+  m_Position: {x: 417, y: 347, z: 0}
+  m_IKOnFeet: 0
+  m_Mirror: 0
+  m_Tag: 
 --- !u!1102 &110206434
 State:
   m_ObjectHideFlags: 3
@@ -322,6 +337,36 @@ State:
   m_IKOnFeet: 0
   m_Mirror: 0
   m_Tag: 
+--- !u!1102 &110272664
+State:
+  m_ObjectHideFlags: 3
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: reloading
+  m_Speed: 1
+  m_CycleOffset: 0
+  m_Motions:
+  - {fileID: 7400000, guid: de9e91cc420bab440a9001f057df527b, type: 2}
+  m_ParentStateMachine: {fileID: 110754274}
+  m_Position: {x: 487, y: 477, z: 0}
+  m_IKOnFeet: 0
+  m_Mirror: 0
+  m_Tag: 
+--- !u!1102 &110277146
+State:
+  m_ObjectHideFlags: 3
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: gunreload
+  m_Speed: 1
+  m_CycleOffset: 0
+  m_Motions:
+  - {fileID: 7400000, guid: c871d0158ad1434429647fca2aea8124, type: 2}
+  m_ParentStateMachine: {fileID: 110754274}
+  m_Position: {x: 452, y: 412, z: 0}
+  m_IKOnFeet: 0
+  m_Mirror: 0
+  m_Tag: 
 --- !u!1102 &110280902
 State:
   m_ObjectHideFlags: 3
@@ -352,24 +397,27 @@ StateMachine:
   - {fileID: 110201894}
   - {fileID: 110254894}
   - {fileID: 110225198}
+  - {fileID: 110205234}
+  - {fileID: 110277146}
+  - {fileID: 110272664}
   m_ChildStateMachine: []
   m_ChildStateMachinePosition: []
   m_OrderedTransitions:
     data:
-      first: {fileID: 110225198}
+      first: {fileID: 110232742}
       second:
-      - {fileID: 110137670}
-      - {fileID: 110116296}
+      - {fileID: 110186362}
+      - {fileID: 110125902}
     data:
       first: {fileID: 110254894}
       second:
       - {fileID: 110159036}
       - {fileID: 110110570}
     data:
-      first: {fileID: 110232742}
+      first: {fileID: 110225198}
       second:
-      - {fileID: 110186362}
-      - {fileID: 110125902}
+      - {fileID: 110137670}
+      - {fileID: 110116296}
   m_MotionSetCount: 1
   m_AnyStatePosition: {x: 120, y: -216, z: 0}
   m_ParentStateMachinePosition: {x: 800, y: 20, z: 0}
