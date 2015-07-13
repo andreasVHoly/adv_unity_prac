@@ -78,7 +78,7 @@ Transition:
   m_Name: 
   m_SrcState: {fileID: 110225198}
   m_DstState: {fileID: 110254894}
-  m_TransitionDuration: .326087058
+  m_TransitionDuration: .0849470943
   m_TransitionOffset: 0
   m_Conditions:
   - m_ConditionMode: 3
@@ -122,7 +122,7 @@ Transition:
   m_Name: 
   m_SrcState: {fileID: 110225198}
   m_DstState: {fileID: 110232742}
-  m_TransitionDuration: .326087058
+  m_TransitionDuration: .134271264
   m_TransitionOffset: 0
   m_Conditions:
   - m_ConditionMode: 2
@@ -151,6 +151,26 @@ Transition:
   m_Conditions:
   - m_ConditionMode: 1
     m_ConditionEvent: Reloading
+    m_EventTreshold: 0
+    m_ExitTime: .911764741
+  m_Atomic: 1
+  m_Solo: 0
+  m_Mute: 0
+  m_CanTransitionToSelf: 0
+--- !u!1101 &110143302
+Transition:
+  serializedVersion: 2
+  m_ObjectHideFlags: 3
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: 
+  m_SrcState: {fileID: 110206434}
+  m_DstState: {fileID: 110218258}
+  m_TransitionDuration: .0882352889
+  m_TransitionOffset: 0
+  m_Conditions:
+  - m_ConditionMode: 5
+    m_ConditionEvent: 
     m_EventTreshold: 0
     m_ExitTime: .911764741
   m_Atomic: 1
@@ -197,6 +217,26 @@ Transition:
   m_Solo: 0
   m_Mute: 0
   m_CanTransitionToSelf: 0
+--- !u!1101 &110177290
+Transition:
+  serializedVersion: 2
+  m_ObjectHideFlags: 3
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: 
+  m_SrcState: {fileID: 110218258}
+  m_DstState: {fileID: 110206434}
+  m_TransitionDuration: .5
+  m_TransitionOffset: 0
+  m_Conditions:
+  - m_ConditionMode: 5
+    m_ConditionEvent: 
+    m_EventTreshold: 0
+    m_ExitTime: .5
+  m_Atomic: 1
+  m_Solo: 0
+  m_Mute: 0
+  m_CanTransitionToSelf: 0
 --- !u!1101 &110186362
 Transition:
   serializedVersion: 2
@@ -206,7 +246,7 @@ Transition:
   m_Name: 
   m_SrcState: {fileID: 110232742}
   m_DstState: {fileID: 110254894}
-  m_TransitionDuration: .0882352889
+  m_TransitionDuration: .0206129178
   m_TransitionOffset: 0
   m_Conditions:
   - m_ConditionMode: 3
@@ -228,7 +268,7 @@ State:
   m_Motions:
   - {fileID: 7400012, guid: fbd46848dd2da2e40aa9d048664941af, type: 3}
   m_ParentStateMachine: {fileID: 110754274}
-  m_Position: {x: 288, y: 156, z: 0}
+  m_Position: {x: 408, y: 96, z: 0}
   m_IKOnFeet: 0
   m_Mirror: 0
   m_Tag: 
@@ -247,21 +287,6 @@ State:
   m_IKOnFeet: 0
   m_Mirror: 0
   m_Tag: 
---- !u!1102 &110205234
-State:
-  m_ObjectHideFlags: 3
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_Name: reloadgun
-  m_Speed: 1
-  m_CycleOffset: 0
-  m_Motions:
-  - {fileID: 7400000, guid: 6a0eb7a1efa53cb4a9faa09520fe96e6, type: 2}
-  m_ParentStateMachine: {fileID: 110754274}
-  m_Position: {x: 417, y: 347, z: 0}
-  m_IKOnFeet: 0
-  m_Mirror: 0
-  m_Tag: 
 --- !u!1102 &110206434
 State:
   m_ObjectHideFlags: 3
@@ -277,6 +302,36 @@ State:
   m_IKOnFeet: 0
   m_Mirror: 0
   m_Tag: 
+--- !u!1102 &110217990
+State:
+  m_ObjectHideFlags: 3
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: gunreload
+  m_Speed: 1
+  m_CycleOffset: 0
+  m_Motions:
+  - {fileID: 7400000, guid: c871d0158ad1434429647fca2aea8124, type: 2}
+  m_ParentStateMachine: {fileID: 110781260}
+  m_Position: {x: 496, y: -21, z: 0}
+  m_IKOnFeet: 0
+  m_Mirror: 0
+  m_Tag: 
+--- !u!1102 &110218258
+State:
+  m_ObjectHideFlags: 3
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: shooting
+  m_Speed: 1
+  m_CycleOffset: 0
+  m_Motions:
+  - {fileID: 7400000, guid: c871d0158ad1434429647fca2aea8124, type: 2}
+  m_ParentStateMachine: {fileID: 110781260}
+  m_Position: {x: 186, y: 200, z: 0}
+  m_IKOnFeet: 0
+  m_Mirror: 0
+  m_Tag: 
 --- !u!1102 &110224250
 State:
   m_ObjectHideFlags: 3
@@ -288,7 +343,7 @@ State:
   m_Motions:
   - {fileID: 7400008, guid: fbd46848dd2da2e40aa9d048664941af, type: 3}
   m_ParentStateMachine: {fileID: 110781260}
-  m_Position: {x: 156, y: 72, z: 0}
+  m_Position: {x: 144, y: 72, z: 0}
   m_IKOnFeet: 0
   m_Mirror: 0
   m_Tag: 
@@ -303,7 +358,7 @@ State:
   m_Motions:
   - {fileID: 7400018, guid: fbd46848dd2da2e40aa9d048664941af, type: 3}
   m_ParentStateMachine: {fileID: 110754274}
-  m_Position: {x: 421, y: -40, z: 0}
+  m_Position: {x: 588, y: -60, z: 0}
   m_IKOnFeet: 0
   m_Mirror: 0
   m_Tag: 
@@ -318,7 +373,7 @@ State:
   m_Motions:
   - {fileID: 7400006, guid: fbd46848dd2da2e40aa9d048664941af, type: 3}
   m_ParentStateMachine: {fileID: 110754274}
-  m_Position: {x: 204, y: -144, z: 0}
+  m_Position: {x: 420, y: -204, z: 0}
   m_IKOnFeet: 0
   m_Mirror: 0
   m_Tag: 
@@ -333,37 +388,7 @@ State:
   m_Motions:
   - {fileID: 7400002, guid: fbd46848dd2da2e40aa9d048664941af, type: 3}
   m_ParentStateMachine: {fileID: 110754274}
-  m_Position: {x: 168, y: 36, z: 0}
-  m_IKOnFeet: 0
-  m_Mirror: 0
-  m_Tag: 
---- !u!1102 &110272664
-State:
-  m_ObjectHideFlags: 3
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_Name: reloading
-  m_Speed: 1
-  m_CycleOffset: 0
-  m_Motions:
-  - {fileID: 7400000, guid: de9e91cc420bab440a9001f057df527b, type: 2}
-  m_ParentStateMachine: {fileID: 110754274}
-  m_Position: {x: 487, y: 477, z: 0}
-  m_IKOnFeet: 0
-  m_Mirror: 0
-  m_Tag: 
---- !u!1102 &110277146
-State:
-  m_ObjectHideFlags: 3
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_Name: gunreload
-  m_Speed: 1
-  m_CycleOffset: 0
-  m_Motions:
-  - {fileID: 7400000, guid: c871d0158ad1434429647fca2aea8124, type: 2}
-  m_ParentStateMachine: {fileID: 110754274}
-  m_Position: {x: 452, y: 412, z: 0}
+  m_Position: {x: 276, y: -60, z: 0}
   m_IKOnFeet: 0
   m_Mirror: 0
   m_Tag: 
@@ -397,9 +422,6 @@ StateMachine:
   - {fileID: 110201894}
   - {fileID: 110254894}
   - {fileID: 110225198}
-  - {fileID: 110205234}
-  - {fileID: 110277146}
-  - {fileID: 110272664}
   m_ChildStateMachine: []
   m_ChildStateMachinePosition: []
   m_OrderedTransitions:
@@ -408,6 +430,15 @@ StateMachine:
       second:
       - {fileID: 110186362}
       - {fileID: 110125902}
+    data:
+      first: {fileID: 110201776}
+      second: []
+    data:
+      first: {fileID: 110280902}
+      second: []
+    data:
+      first: {fileID: 110201894}
+      second: []
     data:
       first: {fileID: 110254894}
       second:

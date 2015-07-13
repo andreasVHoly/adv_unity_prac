@@ -22,6 +22,9 @@ public class WeaponScript : MonoBehaviour {
 	private float reload;
 	private bool reloading;
 
+	private float shooting;
+	private bool shot;
+
 	// Use this for initialization
 	void Start () {
 		hitObject = null;
@@ -31,19 +34,32 @@ public class WeaponScript : MonoBehaviour {
 		reloading = false;
 		reloadTime = 3.08f;
 		reload = 0;
+		shooting = 0;
+		shot = false;
 	}
 	
 	// Update is called once per frame
 	void Update () {
 		reload += Time.deltaTime;
+		shooting += Time.deltaTime;
+
+		if (shooting > 0.3 && shot){
+			shooting = 0;
+			animator.SetBool("Shooting",false);
+			shot = false;
+		}
+
 		if (reload > reloadTime){
 			reloading = false;
 			animator.SetBool("Reloading",reloading);
 			reload =  0;
 		}
 
-		if (Input.GetButtonDown("Fire1")){
+		if (Input.GetButtonDown("Fire1") && !reloading){
 			shootWeapon();
+			animator.SetBool("Shooting",true);
+			shot = true;
+
 		}
 
 		if (Input.GetKeyDown(KeyCode.R) && !reloading){
