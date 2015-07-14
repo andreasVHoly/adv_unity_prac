@@ -50,7 +50,7 @@ public class ChaseCam : MonoBehaviour {
 		}*/
 
 
-		if (distance > dMax){
+		/*if (distance > dMax){
 			//speed = initialSpeed;
 		}
 		if (distance >= dMin){
@@ -63,7 +63,15 @@ public class ChaseCam : MonoBehaviour {
 
 		if (distance <= dRest){
 			//speed = 0;
+		}*/
+
+		if (distance > dRest){
+			speed += acceleration;
 		}
+		else if (distance <= dRest && speed > 0){
+			speed -= acceleration;
+		}
+
 
 
 

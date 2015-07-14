@@ -4,6 +4,7 @@ using UnityEngine.UI;
 
 public class WeaponScript : MonoBehaviour {
 
+	public GameObject muzzleFlash;
 
 	//the animator to handle the animations for the player
 	private Animator animator;
@@ -58,6 +59,10 @@ public class WeaponScript : MonoBehaviour {
 		if (Input.GetButtonDown("Fire1") && !reloading){
 			shootWeapon();
 			animator.SetBool("Shooting",true);
+			var effect = Instantiate(muzzleFlash) as GameObject;
+			effect.transform.position = bulletSpawn.position;
+			effect.transform.rotation = bulletSpawn.rotation;
+			Destroy(effect,0.5f);
 			shot = true;
 
 		}
