@@ -73,9 +73,9 @@ public class PlayerScript : MonoBehaviour {
 
 
 		fpsCam.transform.localRotation = Quaternion.Euler(rotationValueY,0,0);
-		gun.rotation = fpsCam.transform.rotation;
-		rightArm.rotation = fpsCam.transform.rotation;
-		leftArm.rotation = fpsCam.transform.rotation;
+		//gun.rotation = fpsCam.transform.rotation;
+		//rightArm.rotation = fpsCam.transform.rotation;
+		//leftArm.rotation = fpsCam.transform.rotation;
 
 	}
 

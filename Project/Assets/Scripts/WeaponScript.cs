@@ -69,6 +69,7 @@ public class WeaponScript : MonoBehaviour {
 		}
 
 		if (Input.GetKeyDown(KeyCode.R) && !reloading){
+			reload = 0;
 			reloading = true;
 			animator.SetBool("Reloading",reloading);
 		}
