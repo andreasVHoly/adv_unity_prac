@@ -3849,6 +3849,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fpsCam: {fileID: 1971819076}
+  gun: {fileID: 1033531212}
+  leftArm: {fileID: 1739793946}
+  rightArm: {fileID: 1889797678}
   charSpeed: {x: 0, y: 0, z: 0}
   mouseSpeed: {x: 0, y: 0, z: 0}
   mouseDirection: {x: 0, y: 0, z: 0}
@@ -6336,8 +6339,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1715100024}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: .0160000008, y: .142000005, z: .317000002}
+  m_LocalRotation: {x: 1.35195605e-11, y: -7.76968545e-10, z: -8.16306397e-11, w: 1}
+  m_LocalPosition: {x: .0160024576, y: .142000034, z: .31700027}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1033531212}

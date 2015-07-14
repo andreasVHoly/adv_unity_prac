@@ -10,9 +10,8 @@ GameObject:
   - 4: {fileID: 463444}
   - 33: {fileID: 3363444}
   - 23: {fileID: 2363444}
-  - 136: {fileID: 13667078}
   - 114: {fileID: 11415150}
-  - 54: {fileID: 5464014}
+  - 64: {fileID: 6485252}
   m_Layer: 8
   m_Name: bullet
   m_TagString: Untagged
@@ -59,21 +58,19 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 163444}
   m_Mesh: {fileID: 4300000, guid: 7755467ebe514f846bddc4b90601c61e, type: 3}
---- !u!54 &5464014
-Rigidbody:
+--- !u!64 &6485252
+MeshCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 163444}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
   serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0
-  m_UseGravity: 0
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
+  m_SmoothSphereCollisions: 0
+  m_Convex: 0
+  m_Mesh: {fileID: 4300000, guid: 7755467ebe514f846bddc4b90601c61e, type: 3}
 --- !u!114 &11415150
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -85,21 +82,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6be2bd3a9d0bd1942a85d4dec227964b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 0
-  TTL: 10
---- !u!136 &13667078
-CapsuleCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 163444}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  m_Radius: .00999999978
-  m_Height: .0399999991
-  m_Direction: 2
-  m_Center: {x: 0, y: 0, z: -.0105701443}
+  speed: 10
+  TTL: 5
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

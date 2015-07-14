@@ -59,10 +59,6 @@ public class WeaponScript : MonoBehaviour {
 		if (Input.GetButtonDown("Fire1") && !reloading){
 			shootWeapon();
 			animator.SetBool("Shooting",true);
-			var effect = Instantiate(muzzleFlash) as GameObject;
-			effect.transform.position = bulletSpawn.position;
-			effect.transform.rotation = bulletSpawn.rotation;
-			Destroy(effect,0.5f);
 			shot = true;
 
 		}
@@ -79,9 +75,16 @@ public class WeaponScript : MonoBehaviour {
 
 
 
-		//print(cam);
-		Ray shot = new Ray(cam.position,cam.forward);
 
+		//particle effect/muzzle flash
+		var effect = Instantiate(muzzleFlash) as GameObject;
+		effect.transform.position = bulletSpawn.position;
+		effect.transform.rotation = bulletSpawn.rotation;
+		Destroy(effect,0.5f);
+
+
+		//ray casting and handling
+		Ray shot = new Ray(cam.position,cam.forward);
 		findShotObject(shot);
 		print(hitObject);
 		if (hitObject != null){
@@ -94,11 +97,17 @@ public class WeaponScript : MonoBehaviour {
 
 		}
 
-		/*var bulletObj = Instantiate(bullet) as Transform;
-		bulletObj.transform.position = bulletSpawn.transform.position;
-		bulletObj.transform.rotation = gameObject.transform.rotation;
-		bulletObj.transform.LookAt(hitObject.position);
-		bulletObj.rigidbody.AddForce(gameObject.transform.forward * bulletSpeed);*/
+		//bullet instantiation
+
+		Instantiate(bullet, bulletSpawn.position, bulletSpawn.rotation);
+	
+		//var bulletObj = Instantiate(bullet) as Transform;
+		//bulletObj.transform.position = bulletSpawn.transform.position;
+		//bulletObj.transform.rotation = gameObject.transform.rotation;
+		//bulletObj.transform.LookAt(hitObject.position);
+		//bulletObj.rigidbody.AddForce(gameObject.transform.forward * bulletSpeed);
+
+
 		/*Debug.DrawLine (gameObject.transform.position, hitObject.transform.position);
 		var bulletObj = Instantiate(bullet, bulletSpawn.transform.position, gameObject.transform.rotation) as Transform;
 		bulletObj.transform.LookAt(hitObject.transform.position);

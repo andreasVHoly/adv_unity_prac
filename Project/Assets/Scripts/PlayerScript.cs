@@ -6,6 +6,10 @@ public class PlayerScript : MonoBehaviour {
 
 	public Camera fpsCam;
 
+	public Transform gun;
+	public Transform leftArm;
+	public Transform rightArm;
+
 
 	//the controller that we use to move the player
 	private CharacterController controller;
@@ -69,6 +73,10 @@ public class PlayerScript : MonoBehaviour {
 
 
 		fpsCam.transform.localRotation = Quaternion.Euler(rotationValueY,0,0);
+		gun.rotation = fpsCam.transform.rotation;
+		rightArm.rotation = fpsCam.transform.rotation;
+		leftArm.rotation = fpsCam.transform.rotation;
+
 	}
 
 	void movePlayer(float moveX, float moveZ){
