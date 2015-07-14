@@ -15,10 +15,6 @@ public class BulletScript : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		transform.Translate(Vector3.forward*speed*Time.deltaTime);
-
 	}
 
-	void onCollisionEnter(Collision collision){
-		print ("collided with " + collision.gameObject.name);
-	}
 }

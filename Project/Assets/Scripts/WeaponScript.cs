@@ -86,7 +86,7 @@ public class WeaponScript : MonoBehaviour {
 		//ray casting and handling
 		Ray shot = new Ray(cam.position,cam.forward);
 		findShotObject(shot);
-		print(hitObject);
+		//print(hitObject);
 		if (hitObject != null){
 			HealthScript health = hitObject.GetComponent<HealthScript>();
 
