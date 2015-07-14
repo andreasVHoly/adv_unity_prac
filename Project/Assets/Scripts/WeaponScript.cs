@@ -6,6 +6,10 @@ public class WeaponScript : MonoBehaviour {
 
 	public GameObject muzzleFlash;
 
+
+	public GameObject scripts;
+	private SoundManager soundManager;
+
 	//the animator to handle the animations for the player
 	private Animator animator;
 	public Transform textObj;
@@ -28,6 +32,7 @@ public class WeaponScript : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+		soundManager = scripts.GetComponent<SoundManager>();
 		hitObject = null;
 		cam = this.gameObject.GetComponent<PlayerScript>().fpsCam.transform;
 		//we get the animator component
@@ -74,7 +79,8 @@ public class WeaponScript : MonoBehaviour {
 
 
 
-
+		//sound
+		soundManager.playGunShot();
 
 		//particle effect/muzzle flash
 		var effect = Instantiate(muzzleFlash) as GameObject;
