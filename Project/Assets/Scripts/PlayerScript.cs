@@ -5,6 +5,8 @@ public class PlayerScript : MonoBehaviour {
 
 
 	public Camera fpsCam;
+	private ChaseCam chaseScript;
+	public GameObject chaseCam;
 
 	public Transform gun;
 	public Transform leftArm;
@@ -40,6 +42,9 @@ public class PlayerScript : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+
+		chaseScript = chaseCam.GetComponent<ChaseCam>();
+
 		//we set up the movement speed to be equal on the x,z and y is the jumping speed
 		charSpeed = new Vector3(7f,5f,7f);
 		//we set the mouse speed
@@ -89,7 +94,7 @@ public class PlayerScript : MonoBehaviour {
 
 
 
-		print(rotationValueY);
+		//print(rotationValueY);
 		fpsCam.transform.localRotation = Quaternion.Euler(rotationValueY,0,0);
 		//gun.rotation = fpsCam.transform.rotation;
 		//rightArm.rotation = fpsCam.transform.rotation;
@@ -111,6 +116,7 @@ public class PlayerScript : MonoBehaviour {
 		
 		//we factor in the rotation
 		move = transform.rotation * move;
+
 	}
 
 
@@ -119,6 +125,26 @@ public class PlayerScript : MonoBehaviour {
 		movementDirection = new Vector3(Input.GetAxis("Horizontal"), 0,Input.GetAxis("Vertical")).normalized;
 		mouseDirection = new Vector3(Input.GetAxis("Mouse X"),Input.GetAxis("Mouse Y"), 0 );
 		//we check if the player is trying to jump while on the floor, check for button press first as this will allow less checks on for the grounded flag
+
+
+		//print("H " + Input.GetAxis("Horizontal"));
+		//print("V " + Input.GetAxis("Vertical"));
+
+		if (Input.GetAxis("Horizontal") != 0 || Input.GetAxis("Vertical") > 0){
+			chaseScript.moveForward();
+			print("moving fwd");
+
+		}
+		else if (Input.GetAxis("Horizontal") != 0 || Input.GetAxis("Vertical") < 0){
+			chaseScript.moveBackward();
+			
+		}
+		else{
+			print("moving backward");
+			chaseScript.haltMovement();
+		}
+
+
 		if(Input.GetButtonDown("Jump") && controller.isGrounded){
 			jumpingVelocity = charSpeed.y;
 			//jumping = true;
@@ -131,8 +157,6 @@ public class PlayerScript : MonoBehaviour {
 		else{
 			animator.SetBool("Jumping", true);
 		}
-
-
 		animator.SetFloat("Speed", movementDirection.magnitude);
 	}
 	//updates once per physics loop

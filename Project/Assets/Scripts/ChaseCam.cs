@@ -41,7 +41,7 @@ public class ChaseCam : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		distance = Vector3.Distance(transform.position,target.position);
+		//distance = Vector3.Distance(transform.position,target.position);
 		/*if (speed > initialSpeed && dist < distance){
 			speed -= acceleration;
 		}
@@ -65,25 +65,60 @@ public class ChaseCam : MonoBehaviour {
 			//speed = 0;
 		}*/
 
-		if (distance > dRest){
-			speed += acceleration;
-		}
-		else if (distance <= dRest && speed > 0){
-			speed -= acceleration;
-		}
+		//if (distance > dRest){
+		//	speed += acceleration;
+		//}
+		///else if (distance <= dRest && speed > 0){
+			//speed -= acceleration;
+		//}
 
 
 
 
 		//transform.position = new Vector3(target.position.x, height, target.position.z-distance);
-		transform.Translate(target.forward*speed);
+		//transform.Translate(target.forward*speed);
 		//controller.Move(speed * Time.deltaTime);
 
 
 	}
 
 
+	public void moveForward(){
 
+		if (speed < 0){
+			speed = 0;
+		}
+		if (speed < maxSpeed){
+			speed += acceleration;
+		}
+
+		transform.Translate(target.forward*speed);
+	}
+
+
+	public void moveBackward(){
+		//if (speed > 0){
+		if (speed > 0){
+			speed = 0;
+		}
+
+		if (speed > -maxSpeed){
+			speed -= acceleration;
+		}
+
+		//}
+		transform.Translate(target.forward*speed);
+	}
+
+	public void haltMovement(){
+		if (speed > 0){
+		speed -= acceleration;
+		}
+		if (speed < 0){
+			speed += acceleration;
+		}
+		transform.Translate(target.forward*speed);
+	}
 
 
 	/*public void setValues(float _height, float _radius){
