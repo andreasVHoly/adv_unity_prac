@@ -69,9 +69,27 @@ public class PlayerScript : MonoBehaviour {
 
 
 		rotationValueY -= mouseY;
+		//animator.SetFloat("Angle", rotationValueY);
 		rotationValueY = Mathf.Clamp(rotationValueY, -80f, 30f);
 
 
+		float animAngle = 0;
+
+		if (fpsCam.transform.rotation.eulerAngles.x <= 90){
+			animAngle = -fpsCam.transform.rotation.eulerAngles.x;
+		}
+		else{
+			animAngle = 360 -fpsCam.transform.rotation.eulerAngles.x;
+		}
+		 
+
+		animator.SetFloat("Angle", rotationValueY);
+
+
+
+
+
+		print(rotationValueY);
 		fpsCam.transform.localRotation = Quaternion.Euler(rotationValueY,0,0);
 		//gun.rotation = fpsCam.transform.rotation;
 		//rightArm.rotation = fpsCam.transform.rotation;

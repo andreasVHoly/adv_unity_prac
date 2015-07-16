@@ -81,7 +81,7 @@ public class WeaponScript : MonoBehaviour {
 
 
 		//sound
-		soundManager.playGunShot();
+		//soundManager.playGunShot();
 
 		//particle effect/muzzle flash
 		var effect = Instantiate(muzzleFlash) as GameObject;
