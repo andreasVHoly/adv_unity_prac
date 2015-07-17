@@ -6,9 +6,10 @@ public class KeyListener : MonoBehaviour {
 
 	private CameraCycle camCycle;
 
-	private OrbitCamUI camUI;
+	private OrbitCamUI orbitCamUI;
+	private ChaseCamUI chaseCamUI;
 
-	private bool orbitListen1, orbitListen2;
+	private bool orbitListen1, orbitListen2, chaseListen1, chaseListen2;
 	
 
 	
@@ -16,9 +17,12 @@ public class KeyListener : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		camCycle = gameObject.GetComponent<CameraCycle>();
-		camUI = gameObject.GetComponent<OrbitCamUI>();
+		orbitCamUI = gameObject.GetComponent<OrbitCamUI>();
+		chaseCamUI = gameObject.GetComponent<ChaseCamUI>();
 		orbitListen1 = false;
 		orbitListen2 = false;
+		chaseListen1 = false;
+		chaseListen2 = false;
 	}
 	
 	// Update is called once per frame
@@ -31,17 +35,34 @@ public class KeyListener : MonoBehaviour {
 			Application.Quit();
 		}
 
-		if (Input.GetKeyDown(KeyCode.Alpha1) && camCycle.counter == 0){
-			camUI.radiusInput.gameObject.SetActive(true);
-			camUI.radiusInput.ActivateInputField();
+
+		//orbit camera input
+		if (Input.GetKeyDown(KeyCode.Alpha1) && camCycle.counter == 0 && !orbitListen2){
+			orbitCamUI.radiusInput.gameObject.SetActive(true);
+			orbitCamUI.radiusInput.ActivateInputField();
 			orbitListen1 = true;
 
 		}
 
-		if (Input.GetKeyDown(KeyCode.Alpha2) && camCycle.counter == 0){
-			camUI.heightInput.gameObject.SetActive(true);
-			camUI.heightInput.ActivateInputField();
+		if (Input.GetKeyDown(KeyCode.Alpha2) && camCycle.counter == 0 && !orbitListen1){
+			orbitCamUI.heightInput.gameObject.SetActive(true);
+			orbitCamUI.heightInput.ActivateInputField();
 			orbitListen2 = true;
+		}
+
+
+		//chase camera input
+		if (Input.GetKeyDown(KeyCode.Alpha1) && camCycle.counter == 1 && !chaseListen2){
+			chaseCamUI.distanceInput.gameObject.SetActive(true);
+			chaseCamUI.distanceInput.ActivateInputField();
+			chaseListen1 = true;
+			
+		}
+		
+		if (Input.GetKeyDown(KeyCode.Alpha2) && camCycle.counter == 1 && !chaseListen1){
+			chaseCamUI.heightInput.gameObject.SetActive(true);
+			chaseCamUI.heightInput.ActivateInputField();
+			chaseListen2 = true;
 		}
 
 
@@ -50,18 +71,36 @@ public class KeyListener : MonoBehaviour {
 
 	void OnGUI(){
 		Event keycheck = Event.current;
+		//chase camera
+		if (chaseListen1 && keycheck.keyCode == KeyCode.Return){
+			chaseCamUI.updateDistance();
+			chaseCamUI.distanceInput.DeactivateInputField();
+			chaseCamUI.distanceInput.gameObject.SetActive(false);
+			chaseListen1 = false;
+			
+		}
+		
+		else if (chaseListen2 && keycheck.keyCode == KeyCode.Return){
+			chaseCamUI.updateHeight();
+			chaseCamUI.heightInput.DeactivateInputField();
+			chaseCamUI.heightInput.gameObject.SetActive(false);
+			chaseListen2 = false;
+			
+		}
+
+		//orbit camera
 		if (orbitListen1 && keycheck.keyCode == KeyCode.Return){
-			camUI.updateRadius();
-			camUI.radiusInput.DeactivateInputField();
-			camUI.radiusInput.gameObject.SetActive(false);
+			orbitCamUI.updateRadius();
+			orbitCamUI.radiusInput.DeactivateInputField();
+			orbitCamUI.radiusInput.gameObject.SetActive(false);
 			orbitListen1 = false;
 			
 		}
 
 		else if (orbitListen2 && keycheck.keyCode == KeyCode.Return){
-			camUI.updateHeight();
-			camUI.heightInput.DeactivateInputField();
-			camUI.heightInput.gameObject.SetActive(false);
+			orbitCamUI.updateHeight();
+			orbitCamUI.heightInput.DeactivateInputField();
+			orbitCamUI.heightInput.gameObject.SetActive(false);
 			orbitListen2 = false;
 			
 		}
