@@ -85,15 +85,15 @@ public class PlayerScript : MonoBehaviour {
 		//angle value to determine which top body animation to play
 		float animAngle = 0;
 
-		/*if (fpsCam.transform.rotation.eulerAngles.x <= 90){
+		if (fpsCam.transform.rotation.eulerAngles.x <= 90){
 			animAngle = -fpsCam.transform.rotation.eulerAngles.x;
 		}
 		else{
 			animAngle = 360 -fpsCam.transform.rotation.eulerAngles.x;
 		}
 		 
-
-		animator.SetFloat("Angle", rotationValueY);*/
+		print(animAngle);
+		animator.SetFloat("Angle", animAngle);
 
 
 
