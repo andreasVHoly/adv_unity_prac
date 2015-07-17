@@ -108,17 +108,6 @@ public class WeaponScript : MonoBehaviour {
 
 		Instantiate(bullet, bulletSpawn.position, bulletSpawn.rotation);
 	
-		//var bulletObj = Instantiate(bullet) as Transform;
-		//bulletObj.transform.position = bulletSpawn.transform.position;
-		//bulletObj.transform.rotation = gameObject.transform.rotation;
-		//bulletObj.transform.LookAt(hitObject.position);
-		//bulletObj.rigidbody.AddForce(gameObject.transform.forward * bulletSpeed);
-
-
-		/*Debug.DrawLine (gameObject.transform.position, hitObject.transform.position);
-		var bulletObj = Instantiate(bullet, bulletSpawn.transform.position, gameObject.transform.rotation) as Transform;
-		bulletObj.transform.LookAt(hitObject.transform.position);
-		bulletObj.rigidbody.AddForce(gameObject.transform.forward * bulletSpeed);*/
 	}
 
 	void findShotObject(Ray raycast){

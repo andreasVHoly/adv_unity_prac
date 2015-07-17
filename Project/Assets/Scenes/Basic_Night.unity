@@ -3798,6 +3798,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fpsCam: {fileID: 1971819076}
   chaseCam: {fileID: 1274040750}
+  bulletSpawn: {fileID: 1715100025}
   gun: {fileID: 1033531212}
   leftArm: {fileID: 1739793946}
   rightArm: {fileID: 1889797678}
@@ -4183,6 +4184,14 @@ Prefab:
       propertyPath: chaseCam
       value: 
       objectReference: {fileID: 1274040750}
+    - target: {fileID: 11406352, guid: 1faa6de455dd1634eabce325628ed20d, type: 2}
+      propertyPath: bulletSpawn
+      value: 
+      objectReference: {fileID: 1715100025}
+    - target: {fileID: 11406352, guid: 1faa6de455dd1634eabce325628ed20d, type: 2}
+      propertyPath: crosshair
+      value: 
+      objectReference: {fileID: 1377156857}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 1faa6de455dd1634eabce325628ed20d, type: 2}
   m_RootGameObject: {fileID: 1289278398}
@@ -5896,7 +5905,6 @@ GameObject:
   - 33: {fileID: 1991920804}
   - 23: {fileID: 1991920803}
   - 64: {fileID: 1991920802}
-  - 54: {fileID: 1991920806}
   m_Layer: 0
   m_Name: TVset_example
   m_TagString: Untagged
@@ -5959,21 +5967,6 @@ Transform:
   - {fileID: 1121789391}
   m_Father: {fileID: 1127873258}
   m_RootOrder: 2
---- !u!54 &1991920806
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1991920801}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: .0500000007
-  m_UseGravity: 0
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
 --- !u!1 &1999079998
 GameObject:
   m_ObjectHideFlags: 0
