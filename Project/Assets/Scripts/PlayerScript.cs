@@ -78,9 +78,11 @@ public class PlayerScript : MonoBehaviour {
 		rotationValueY = Mathf.Clamp(rotationValueY, -80f, 30f);
 
 
+
+		//angle value to determine which top body animation to play
 		float animAngle = 0;
 
-		if (fpsCam.transform.rotation.eulerAngles.x <= 90){
+		/*if (fpsCam.transform.rotation.eulerAngles.x <= 90){
 			animAngle = -fpsCam.transform.rotation.eulerAngles.x;
 		}
 		else{
@@ -88,7 +90,7 @@ public class PlayerScript : MonoBehaviour {
 		}
 		 
 
-		animator.SetFloat("Angle", rotationValueY);
+		animator.SetFloat("Angle", rotationValueY);*/
 
 
 
@@ -99,6 +101,7 @@ public class PlayerScript : MonoBehaviour {
 		//gun.rotation = fpsCam.transform.rotation;
 		//rightArm.rotation = fpsCam.transform.rotation;
 		//leftArm.rotation = fpsCam.transform.rotation;
+		//chaseScript.rotateCamera(mouseX);
 
 	}
 
@@ -130,18 +133,18 @@ public class PlayerScript : MonoBehaviour {
 		//print("H " + Input.GetAxis("Horizontal"));
 		//print("V " + Input.GetAxis("Vertical"));
 
-		if (Input.GetAxis("Horizontal") != 0 || Input.GetAxis("Vertical") > 0){
-			chaseScript.moveForward();
-			print("moving fwd");
+		if (Input.GetAxis("Vertical") > 0){
+			//chaseScript.moveForward();
+			//print("moving fwd");
 
 		}
-		else if (Input.GetAxis("Horizontal") != 0 || Input.GetAxis("Vertical") < 0){
-			chaseScript.moveBackward();
+		else if (Input.GetAxis("Vertical") < 0){
+		//	chaseScript.moveBackward();
 			
 		}
 		else{
-			print("moving backward");
-			chaseScript.haltMovement();
+			//print("stopping");
+			//chaseScript.haltMovement();
 		}
 
 

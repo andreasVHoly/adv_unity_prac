@@ -28,6 +28,9 @@ public class ChaseCam : MonoBehaviour {
 
 	public float height;
 
+
+
+
 	
 
 
@@ -71,17 +74,25 @@ public class ChaseCam : MonoBehaviour {
 		///else if (distance <= dRest && speed > 0){
 			//speed -= acceleration;
 		//}
-
-
-
-
 		//transform.position = new Vector3(target.position.x, height, target.position.z-distance);
 		//transform.Translate(target.forward*speed);
 		//controller.Move(speed * Time.deltaTime);
 
 
+
+
+		transform.LookAt(target.position);
+
+
+
+
+
 	}
 
+
+	public void rotateCamera(float mouseX){
+		transform.Rotate(0,mouseX,0);
+	}
 
 	public void moveForward(){
 
