@@ -86,7 +86,7 @@ public class WeaponScript : MonoBehaviour {
 		//particle effect/muzzle flash
 		var effect = Instantiate(muzzleFlash) as GameObject;
 		effect.transform.position = bulletSpawn.position;
-		effect.transform.rotation = bulletSpawn.rotation;
+		effect.transform.rotation = bulletSpawn.localRotation;
 		Destroy(effect,0.5f);
 
 
