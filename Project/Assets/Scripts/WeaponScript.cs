@@ -7,6 +7,8 @@ public class WeaponScript : MonoBehaviour {
 	public GameObject muzzleFlash;
 
 
+
+
 	public GameObject scripts;
 	private SoundManager soundManager;
 
@@ -29,6 +31,8 @@ public class WeaponScript : MonoBehaviour {
 
 	private float shooting;
 	private bool shot;
+
+	private RaycastHit hitLocation;
 
 	// Use this for initialization
 	void Start () {
@@ -81,13 +85,9 @@ public class WeaponScript : MonoBehaviour {
 
 
 		//sound
-		soundManager.playGunShot();
+		//soundManager.playGunShot();
 
-		//particle effect/muzzle flash
-		var effect = Instantiate(muzzleFlash) as GameObject;
-		effect.transform.position = bulletSpawn.position;
-		effect.transform.rotation = bulletSpawn.localRotation;
-		Destroy(effect,0.5f);
+
 
 
 		//ray casting and handling
@@ -100,12 +100,20 @@ public class WeaponScript : MonoBehaviour {
 			if (health != null){health.takeDamage(damage);}
 
 			var text = textObj.gameObject.GetComponentInChildren<Text>();
-			text.text = hitObject.name;
+			//text.text = hitObject.name;
 
 		}
 
-		//bullet instantiation
 
+		//particle effect/muzzle flash
+		var effect = Instantiate(muzzleFlash) as GameObject;
+		effect.transform.position = bulletSpawn.position;
+		//effect.transform.rotation = bulletSpawn.localRotation;
+		effect.transform.LookAt(hitLocation.point);
+		Destroy(effect,0.5f);
+
+		//bullet instantiation
+		bulletSpawn.LookAt(hitLocation.point);
 		Instantiate(bullet, bulletSpawn.position, bulletSpawn.rotation);
 	
 	}
@@ -116,13 +124,18 @@ public class WeaponScript : MonoBehaviour {
 		int size = objects.Length;
 
 		float lastDistance = 0;
-
+		var text = textObj.gameObject.GetComponentInChildren<Text>();
+		text.text = ":";
 		for (int i = 0; i <size; i++){
 			if (objects[i].transform != this.transform && (hitObject == null || objects[i].distance < lastDistance)){
 				hitObject = objects[i].transform;
 				lastDistance = objects[i].distance;
+				//bulletSpawn.LookAt(objects[i].point);
+				hitLocation = objects[i];
+				//text.text += " " + hitObject.name;
 			}
 		}
+
 
 	}
 

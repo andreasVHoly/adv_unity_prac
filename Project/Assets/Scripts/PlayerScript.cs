@@ -8,7 +8,7 @@ public class PlayerScript : MonoBehaviour {
 	private ChaseCam chaseScript;
 	public GameObject chaseCam;
 
-
+	public GameObject crosshair;
 
 	public Transform bulletSpawn;
 	public Transform gun;
@@ -103,6 +103,7 @@ public class PlayerScript : MonoBehaviour {
 		fpsCam.transform.localRotation = Quaternion.Euler(rotationValueY,0,0);
 		//added in some alterations so that the bullet goes where the crosshair is pointing
 		bulletSpawn.localRotation = Quaternion.Euler(rotationValueY+3,1.7f,0);
+		bulletSpawn.LookAt(crosshair.transform.position);
 		//bulletSpawn.LookAt(fpsCam.transform.forward);
 		//gun.rotation = fpsCam.transform.rotation;
 		//rightArm.rotation = fpsCam.transform.rotation;

@@ -25,7 +25,7 @@ public class RandomObjectCreation : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		if (amount == 0){
-			amount = 10;
+			amount = 40;
 		}
 		xMin = -216;
 		xMax = 5;
