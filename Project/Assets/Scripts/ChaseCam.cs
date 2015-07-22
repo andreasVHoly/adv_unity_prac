@@ -21,7 +21,7 @@ public class ChaseCam : MonoBehaviour {
 		//initial set up
 		transform.position = new Vector3(target.position.x, height, target.position.z-distance);
 		cam = gameObject.GetComponent<Camera>();
-		cam.farClipPlane = Vector3.Distance(target.transform.position, transform.position) + 100;
+		cam.farClipPlane = Vector3.Distance(target.transform.position, transform.position) + 1000;
 	}
 
 
