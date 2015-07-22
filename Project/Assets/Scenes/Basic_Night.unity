@@ -1767,7 +1767,7 @@ GameObject:
   - 4: {fileID: 623911364}
   - 108: {fileID: 623911365}
   m_Layer: 0
-  m_Name: Spotlight
+  m_Name: Point Light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3991,7 +3991,7 @@ GameObject:
   - 4: {fileID: 1121789391}
   - 108: {fileID: 1121789392}
   m_Layer: 0
-  m_Name: Light
+  m_Name: Spot Light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
