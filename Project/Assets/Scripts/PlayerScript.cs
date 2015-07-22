@@ -123,7 +123,16 @@ public class PlayerScript : MonoBehaviour {
 		
 		//we make our new vextor with all 3d velocities added
 		move = new Vector3(speedX,jumpingVelocity,speedZ);
-		
+		if (speedZ > 0){
+			fpsCam.nearClipPlane = 0.3f;
+		}
+		else{
+			if (fpsCam.nearClipPlane > 0.08){
+				fpsCam.nearClipPlane = fpsCam.nearClipPlane - 0.01f;
+			}
+
+		}
+
 		//we factor in the rotation
 		move = transform.rotation * move;
 
