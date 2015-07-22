@@ -34,6 +34,8 @@ public class ChaseCamUI : MonoBehaviour {
 		//we set the UI up with the default values from the script
 		height.text = defaultH + chaseScript.height.ToString();
 		distance.text = defaultR + chaseScript.distance.ToString();
+		height.transform.position = new Vector3(Screen.width/2, Screen.height - Screen.height/10 - 20, height.transform.position.z);
+		distance.transform.position = new Vector3(Screen.width/2, Screen.height - Screen.height/10, distance.transform.position.z);
 	}
 	
 	// Update is called once per frame

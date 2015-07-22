@@ -7,7 +7,7 @@ public class OrbitCamUI : MonoBehaviour {
 	//need to be assigned
 
 	public Text height;
-
+	public Text radius;
 
 
 
@@ -17,7 +17,7 @@ public class OrbitCamUI : MonoBehaviour {
 
 	private string defaultH = "Height: ";
 	private string defaultR = "Radius: ";
-	public Text radius;
+
 
 	public Camera orbitCam;
 
@@ -35,6 +35,8 @@ public class OrbitCamUI : MonoBehaviour {
 		//we set the UI up with the default values from the script
 		height.text = defaultH + orbitScript.height.ToString();
 		radius.text = defaultR + orbitScript.radius.ToString();
+		height.transform.position = new Vector3(Screen.width/2, Screen.height - Screen.height/10 - 20, height.transform.position.z);
+		radius.transform.position = new Vector3(Screen.width/2, Screen.height - Screen.height/10, radius.transform.position.z);
 	}
 	
 	// Update is called once per frame

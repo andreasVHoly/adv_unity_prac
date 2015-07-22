@@ -1444,7 +1444,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 425923339}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -117.300003, y: 2.9000001, z: 39.4000015}
+  m_LocalPosition: {x: -117, y: 3, z: 300}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 36334273}
@@ -1456,7 +1456,7 @@ TextMesh:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 425923339}
-  m_Text: Hello World
+  m_Text: Advanced Unity Practical
   m_OffsetZ: 0
   m_CharacterSize: 3
   m_LineSpacing: 0
@@ -4302,7 +4302,6 @@ GameObject:
   - 4: {fileID: 1289278399}
   - 95: {fileID: 1289278400}
   - 143: {fileID: 1289278401}
-  - 54: {fileID: 1289278402}
   - 81: {fileID: 1289278403}
   - 114: {fileID: 1289278406}
   - 114: {fileID: 1289278405}
@@ -4361,22 +4360,6 @@ CharacterController:
   m_SkinWidth: .0799999982
   m_MinMoveDistance: 0
   m_Center: {x: 0, y: 1, z: 0}
---- !u!54 &1289278402
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 5406358, guid: 1faa6de455dd1634eabce325628ed20d,
-    type: 2}
-  m_PrefabInternal: {fileID: 1566336709}
-  m_GameObject: {fileID: 1289278398}
-  serializedVersion: 2
-  m_Mass: 65
-  m_Drag: 0
-  m_AngularDrag: .0500000007
-  m_UseGravity: 1
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 116
-  m_CollisionDetection: 0
 --- !u!81 &1289278403
 AudioListener:
   m_ObjectHideFlags: 0
@@ -4609,9 +4592,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   height: {fileID: 419675499}
+  radius: {fileID: 545213853}
   radiusInput: {fileID: 148528693}
   heightInput: {fileID: 1423425268}
-  radius: {fileID: 545213853}
   orbitCam: {fileID: 249071669}
 --- !u!114 &1303242675
 MonoBehaviour:
@@ -5614,6 +5597,10 @@ Prefab:
     - target: {fileID: 106232, guid: 1faa6de455dd1634eabce325628ed20d, type: 2}
       propertyPath: m_Layer
       value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 2006356, guid: 1faa6de455dd1634eabce325628ed20d, type: 2}
+      propertyPath: m_CullingMask.m_Bits
+      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 1faa6de455dd1634eabce325628ed20d, type: 2}
@@ -6758,7 +6745,7 @@ Camera:
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 4294966783
+    m_Bits: 4294967295
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
