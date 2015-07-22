@@ -78,7 +78,7 @@ public class PlayerScript : MonoBehaviour {
 
 		rotationValueY -= mouseY;
 		//animator.SetFloat("Angle", rotationValueY);
-		rotationValueY = Mathf.Clamp(rotationValueY, -80f, 30f);
+		rotationValueY = Mathf.Clamp(rotationValueY, -60f, 50f);
 
 
 
