@@ -54,4 +54,5 @@ Sound:
 	background sound of wind
 	water sound when going closer to the waterfall
 	gunshot sound when shooting	
+	Explosion sound when an object is destroyed, need to be close enough to hear it
 Raycasting for collision detection when firing the gun
