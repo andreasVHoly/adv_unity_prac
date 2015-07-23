@@ -14,7 +14,7 @@ public class WeaponScript : MonoBehaviour {
 
 	//the animator to handle the animations for the player
 	private Animator animator;
-	public Transform textObj;
+
 
 	public Transform bullet;
 	private Transform hitObject;
@@ -85,7 +85,7 @@ public class WeaponScript : MonoBehaviour {
 
 
 		//sound
-		soundManager.playGunShot(transform.position);
+		soundManager.playGunShot();
 
 
 
@@ -99,8 +99,6 @@ public class WeaponScript : MonoBehaviour {
 
 			if (health != null){health.takeDamage(damage);}
 
-			var text = textObj.gameObject.GetComponentInChildren<Text>();
-			//text.text = hitObject.name;
 
 		}
 
@@ -124,8 +122,7 @@ public class WeaponScript : MonoBehaviour {
 		int size = objects.Length;
 
 		float lastDistance = 0;
-		var text = textObj.gameObject.GetComponentInChildren<Text>();
-		text.text = ":";
+
 		for (int i = 0; i <size; i++){
 			if (objects[i].transform != this.transform && (hitObject == null || objects[i].distance < lastDistance)){
 				hitObject = objects[i].transform;

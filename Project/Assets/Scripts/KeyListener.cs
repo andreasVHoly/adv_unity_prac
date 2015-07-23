@@ -4,6 +4,8 @@ using System.Collections;
 public class KeyListener : MonoBehaviour {
 
 
+	private SoundManager soundManager;
+
 	private CameraCycle camCycle;
 
 	private OrbitCamUI orbitCamUI;
@@ -23,6 +25,7 @@ public class KeyListener : MonoBehaviour {
 		orbitListen2 = false;
 		chaseListen1 = false;
 		chaseListen2 = false;
+		soundManager = gameObject.GetComponent<SoundManager>();
 	}
 	
 	// Update is called once per frame
@@ -41,13 +44,14 @@ public class KeyListener : MonoBehaviour {
 			orbitCamUI.radiusInput.gameObject.SetActive(true);
 			orbitCamUI.radiusInput.ActivateInputField();
 			orbitListen1 = true;
-
+			soundManager.playUISound();
 		}
 
 		if (Input.GetKeyDown(KeyCode.Alpha2) && camCycle.counter == 0 && !orbitListen1){
 			orbitCamUI.heightInput.gameObject.SetActive(true);
 			orbitCamUI.heightInput.ActivateInputField();
 			orbitListen2 = true;
+			soundManager.playUISound();
 		}
 
 
@@ -56,13 +60,14 @@ public class KeyListener : MonoBehaviour {
 			chaseCamUI.distanceInput.gameObject.SetActive(true);
 			chaseCamUI.distanceInput.ActivateInputField();
 			chaseListen1 = true;
-			
+			soundManager.playUISound();
 		}
 		
 		if (Input.GetKeyDown(KeyCode.Alpha2) && camCycle.counter == 1 && !chaseListen1){
 			chaseCamUI.heightInput.gameObject.SetActive(true);
 			chaseCamUI.heightInput.ActivateInputField();
 			chaseListen2 = true;
+			soundManager.playUISound();
 		}
 
 

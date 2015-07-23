@@ -5149,6 +5149,7 @@ GameObject:
   - 114: {fileID: 1289278405}
   - 114: {fileID: 1289278404}
   - 82: {fileID: 1289278407}
+  - 82: {fileID: 1289278402}
   m_Layer: 9
   m_Name: Swat@Basic_Shooter_Pack
   m_TagString: Player
@@ -5202,6 +5203,64 @@ CharacterController:
   m_SkinWidth: .0799999982
   m_MinMoveDistance: 0
   m_Center: {x: 0, y: 1, z: 0}
+--- !u!82 &1289278402
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1289278398}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_audioClip: {fileID: 8300000, guid: db2ad0e028312654d989b8eb5bb12910, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
 --- !u!81 &1289278403
 AudioListener:
   m_ObjectHideFlags: 0
@@ -5455,8 +5514,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 834dfd48697b622478b755766c7f5f4c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerTransform: {fileID: 1289278399}
   gunShot: {fileID: 8300000, guid: 254f55bb48517d249b61fa7c507ed912, type: 3}
   explosion: {fileID: 8300000, guid: f94b2027faf243647acf705f02cad27c, type: 3}
+  UISound: {fileID: 8300000, guid: db2ad0e028312654d989b8eb5bb12910, type: 3}
 --- !u!114 &1303242676
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6380,6 +6441,14 @@ Prefab:
       propertyPath: chaseCam
       value: 
       objectReference: {fileID: 1274040755}
+    - target: {fileID: 11499136, guid: 3649efe381343ea45a69b444726afe0f, type: 2}
+      propertyPath: playerTransform
+      value: 
+      objectReference: {fileID: 1289278399}
+    - target: {fileID: 11499136, guid: 3649efe381343ea45a69b444726afe0f, type: 2}
+      propertyPath: UISound
+      value: 
+      objectReference: {fileID: 8300000, guid: db2ad0e028312654d989b8eb5bb12910, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3649efe381343ea45a69b444726afe0f, type: 2}
   m_RootGameObject: {fileID: 1303242669}
@@ -7069,7 +7138,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1941777414
 RectTransform:
   m_ObjectHideFlags: 0
