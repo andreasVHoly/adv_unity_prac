@@ -4,18 +4,25 @@ using System.Collections;
 public class SoundManager : MonoBehaviour {
 
 
-	public Transform player;
+
 
 	public AudioClip gunShot;
+	public AudioClip explosion;
 
 
-
-	public void playGunShot(){
-		playSound(gunShot);
+	public void playGunShot(Vector3 position){
+		playSoundAtPosition(gunShot, position);
 	}
 
-	private void playSound(AudioClip clip){
-		AudioSource.PlayClipAtPoint(clip, player.position);
+	public void playExplosion(Vector3 position){
+		playSoundAtPosition(explosion, position);
+	}
+
+
+
+
+	private void playSoundAtPosition(AudioClip clip, Vector3 pos){
+		AudioSource.PlayClipAtPoint(clip, pos);
 	}
 
 	

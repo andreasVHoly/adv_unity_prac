@@ -1,0 +1,155 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &199128
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 499128}
+  - 114: {fileID: 11499128}
+  - 114: {fileID: 11499130}
+  - 114: {fileID: 11499132}
+  - 114: {fileID: 11499134}
+  - 114: {fileID: 11499136}
+  - 114: {fileID: 11499138}
+  m_Layer: 0
+  m_Name: Scripts
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &499128
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 199128}
+  m_LocalRotation: {x: .707106829, y: 0, z: 0, w: .707106829}
+  m_LocalPosition: {x: 55, y: 718, z: 719}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+--- !u!114 &11499128
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 199128}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 00e9714512575eb419eaef7bc5507436, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &11499130
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 199128}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ef599c660e4297e449272a9ea003dc26, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  counter: 0
+  crosshair: {fileID: 0}
+  cams:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  orbitCamUI: {fileID: 0}
+  chaseCamUI: {fileID: 0}
+--- !u!114 &11499132
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 199128}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e99e9467b94e22e4ba3b8ca7230312af, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  materials:
+  - {fileID: 2100000, guid: c3242d09e86f6494daa4ce5b094a40e2, type: 2}
+  - {fileID: 2100000, guid: 954397578ab36bf4d91f6b3e0405f0b2, type: 2}
+  - {fileID: 2100000, guid: 88fdedce8a1ad01438e96d5efab04743, type: 2}
+  - {fileID: 2100000, guid: 804c877a57d47c24487802392ed0abac, type: 2}
+  - {fileID: 2100000, guid: 568968aa3f6430a42acf15da41f728d8, type: 2}
+  - {fileID: 2100000, guid: d68d4b07c705e7b4cb06fccc12d2f811, type: 2}
+  - {fileID: 2100000, guid: 9812218dce874c24f8cea2d47a595730, type: 2}
+  - {fileID: 2100000, guid: 5f25a3f480e58cb499493dd8c6c652e8, type: 2}
+  objects:
+  - {fileID: 404544, guid: 3e8e4be26d8039f4eb3f2d7bb03541db, type: 2}
+  - {fileID: 459840, guid: f8d1a35bbf9ffaf4ca1bde04361b4e10, type: 2}
+  - {fileID: 414734, guid: 0a761535bdb324f49b861650b4db222d, type: 2}
+  - {fileID: 451890, guid: 545136293dda06f4ba80b439d8e4b97e, type: 2}
+  xMin: 0
+  xMax: 0
+  yMin: 0
+  yMax: 0
+  zMin: 0
+  zMax: 0
+  amount: 40
+  parentObject: {fileID: 0}
+--- !u!114 &11499134
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 199128}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3007a3b0289edf24190724ce8f5bc651, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  height: {fileID: 0}
+  radius: {fileID: 0}
+  radiusInput: {fileID: 0}
+  heightInput: {fileID: 0}
+  orbitCam: {fileID: 0}
+--- !u!114 &11499136
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 199128}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 834dfd48697b622478b755766c7f5f4c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gunShot: {fileID: 8300000, guid: 254f55bb48517d249b61fa7c507ed912, type: 3}
+  explosion: {fileID: 8300000, guid: f94b2027faf243647acf705f02cad27c, type: 3}
+--- !u!114 &11499138
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 199128}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 210311bd41761d04e89b3e150a9362b1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  height: {fileID: 0}
+  distance: {fileID: 0}
+  distanceInput: {fileID: 0}
+  heightInput: {fileID: 0}
+  chaseCam: {fileID: 0}
+--- !u!1001 &100100000
+Prefab:
+  m_ObjectHideFlags: 1
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications: []
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 0}
+  m_RootGameObject: {fileID: 199128}
+  m_IsPrefabParent: 1
+  m_IsExploded: 1

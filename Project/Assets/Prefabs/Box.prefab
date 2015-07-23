@@ -125,6 +125,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa3b659b6d9f8584a887dd002fbbffba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  scripts: {fileID: 199128, guid: 3649efe381343ea45a69b444726afe0f, type: 2}
   smoke: {fileID: 100000, guid: 44b3febaf5142a5429938ef0a0de2395, type: 2}
   explosion: {fileID: 100000, guid: bd943c792514675e464dfc7a8c26d3e0, type: 2}
   health: 20

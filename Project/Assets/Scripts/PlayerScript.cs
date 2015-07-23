@@ -92,7 +92,7 @@ public class PlayerScript : MonoBehaviour {
 			animAngle = 360 -fpsCam.transform.rotation.eulerAngles.x;
 		}
 		 
-		print(animAngle);
+	//	print(animAngle);
 		animator.SetFloat("Angle", animAngle);
 
 

@@ -85,7 +85,7 @@ public class WeaponScript : MonoBehaviour {
 
 
 		//sound
-		//soundManager.playGunShot();
+		soundManager.playGunShot(transform.position);
 
 
 
