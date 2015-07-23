@@ -3,6 +3,7 @@ using System.Collections;
 
 public class SoundManager : MonoBehaviour {
 
+	
 
 	public Transform playerTransform;
 
