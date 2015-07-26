@@ -15,8 +15,8 @@ Mouse1		- Fire Weapon
 Camera Controls:
 
 C		- cycle between the 3 cameras (fps, chase and orbiting)
-1		- Prompt to enter value for the camera distance/radius
-2		- Prompt to enter value for the camera height
+1		- Prompt to enter value for the camera distance/radius (Hit Enter key to confirm input)
+2		- Prompt to enter value for the camera height (Hit Enter key to confirm input)
 
 General Controls:
 
@@ -29,7 +29,7 @@ Features:
 FPS (First Person Shooter camera)
 Chase camera with acceleration/decelartion
 Orbiting Camera
-Random Object placement with random texturing
+Random Object placement with random texturing and random health allocation
 Terrain with mountains, trees, grass and a waterfall 
 	Please note that the terrain was added as an extra feature. If you rather want the standard plane, it just needs to be enabled, it is in the Terrian Gameobject
 Particle Effects:
