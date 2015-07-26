@@ -9,16 +9,13 @@ public class RandomObjectCreation : MonoBehaviour {
 	public Transform[] objects;
 
 
-
-
-
-
+	//clamps to confine the player to a smaller part of the map
 	public float xMin, xMax, yMin, yMax, zMin, zMax;
-
+	//amount of objects to spawn
 	public int amount;
-
+	//parent object they are spawned under
 	public Transform parentObject;
-
+	//position
 	private Vector3 position;
 
 
@@ -27,6 +24,7 @@ public class RandomObjectCreation : MonoBehaviour {
 		if (amount == 0){
 			amount = 40;
 		}
+		//clamp values
 		xMin = -216;
 		xMax = 5;
 		yMin = 1;
@@ -34,16 +32,10 @@ public class RandomObjectCreation : MonoBehaviour {
 		zMin = -156;
 		zMax = 203;
 		spawnItems(amount);
-
-
 	}
 
-
+	//returns a new position within the defined range
 	Vector3 getPosition(){
-		//float xPos = Random.Range(xMin,xMax);
-		//float yPos = Random.Range(yMin,yMax);
-		//float zPos = Random.Range(zMin,zMax);
-		//print("spawning at " + xPos + " , " + yPos + " , " + zPos);
 		return new Vector3(Random.Range(xMin,xMax), 
 		                   Random.Range(yMin,yMax),
 		                   Random.Range(zMin,zMax));
@@ -53,16 +45,20 @@ public class RandomObjectCreation : MonoBehaviour {
 	void spawnItems(int no){
 		int arraySize = objects.Length;
 
-		//var bulletObj = Instantiate(bullet, bulletSpawn.transform.position, gameObject.transform.rotation) as Transform;
+
 		for (int i = 0; i < no; i++){
+			//assign a random material
 			int materialChoice = Random.Range(0, materials.Length);
+			//assign a random shape
 			int shapeChoice = Random.Range(0,arraySize);
-
+			//instantiate this object at a random position
 			var obj = Instantiate(objects[shapeChoice], getPosition(), new Quaternion(0,0,0,1)) as Transform;
+			//set the parent
 			obj.parent = parentObject;
+			//set the material
 			obj.GetChild(0).renderer.material = materials[materialChoice];
-
-			//print("adding " + objects[shapeChoice].name + " with material " + materials[materialChoice].name);
+			//set a random health value
+			obj.GetComponent<HealthScript>().health = Random.Range(20,80);
 		}
 	}
 

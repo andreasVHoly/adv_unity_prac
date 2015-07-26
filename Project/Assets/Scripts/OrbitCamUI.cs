@@ -10,7 +10,6 @@ public class OrbitCamUI : MonoBehaviour {
 	public Text radius;
 
 
-
 	public InputField radiusInput;
 	public InputField heightInput;
 

@@ -3,7 +3,7 @@ using System.Collections;
 
 public class OrbitCamera : MonoBehaviour {
 
-
+	//struct to hold all values and equations for our circle
 	struct circleEqu{
 		public float radius;
 		public Vector2 origin;
@@ -27,15 +27,11 @@ public class OrbitCamera : MonoBehaviour {
 	public float height;
 	public float radius;
 	public float rotationSpeed;
-	//public Vector3 target;
 	public Transform target;
 	private Camera cam;
-
+	//circle equation
 	private circleEqu circle;
-
-
-
-
+	//used for calculation
 	private float angle;
 	private float hyp;
 
@@ -53,7 +49,7 @@ public class OrbitCamera : MonoBehaviour {
 		float z = circle.getZ(circle.origin.x+radius);
 		transform.position = new Vector3(circle.getX(z),height,z);
 
-		//transform.position = new Vector3(cam.transform.position.x, height ,cam.transform.position.z);
+		//rotation set up
 		rotationSpeed = 0.01f;
 		hyp = Mathf.Sqrt((height*height) + (radius * radius));
 		angle = Mathf.Asin(radius/hyp);
@@ -64,20 +60,8 @@ public class OrbitCamera : MonoBehaviour {
 
 
 	}
-
-
-	public void moveCamera(){
-		float distance = Vector3.Distance(target.transform.position, transform.position);
-		while (distance < radius){
-			transform.position = new Vector3(transform.position.x+1,transform.position.y,transform.position.z+1);
-			distance = Vector3.Distance(target.transform.position, transform.position);
-		}
-		while (distance > radius){
-			transform.position = new Vector3(transform.position.x-10,transform.position.y,transform.position.z-10);
-			distance = Vector3.Distance(target.transform.position, transform.position);
-		}
-	}
-
+	
+	//rotating the camera
 	public void rotateCamera(){
 		float sinShift = Mathf.Sin(rotationSpeed);
 		float cosShift = Mathf.Cos(rotationSpeed);
@@ -104,7 +88,6 @@ public class OrbitCamera : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		circle.origin = new Vector2(target.position.x, target.position.z);
-		//moveCamera();
 		rotateCamera();
 		transform.LookAt(target.transform.position);
 
@@ -112,7 +95,7 @@ public class OrbitCamera : MonoBehaviour {
 
 
 
-
+	//re calculates the values for the camera if they are changed 
 	public void recalibrateCamera(){
 		//setting up the circle equation
 		circle.radius = radius;
@@ -127,6 +110,7 @@ public class OrbitCamera : MonoBehaviour {
 
 	}
 
+	//setters
 	public void setValues(float _height, float _radius){
 		setHeight(_height);
 		setRadius(_radius);

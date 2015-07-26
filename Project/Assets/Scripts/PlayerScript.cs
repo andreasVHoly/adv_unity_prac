@@ -3,17 +3,13 @@ using System.Collections;
 
 public class PlayerScript : MonoBehaviour {
 
-
+	//camera
 	public Camera fpsCam;
-	private ChaseCam chaseScript;
-	public GameObject chaseCam;
-
+	//gui crosshair
 	public GameObject crosshair;
 
 	public Transform bulletSpawn;
 	public Transform gun;
-	public Transform leftArm;
-	public Transform rightArm;
 
 
 	//the controller that we use to move the player
@@ -39,14 +35,13 @@ public class PlayerScript : MonoBehaviour {
 
 	public bool jumping;
 	//tut
-	public float smoothing = 15f;
-	public float damping = 0.1f;
+	/*public float smoothing = 15f;
+	public float damping = 0.1f;*/
 
 
 	// Use this for initialization
 	void Start () {
 
-		chaseScript = chaseCam.GetComponent<ChaseCam>();
 
 		//we set up the movement speed to be equal on the x,z and y is the jumping speed
 		charSpeed = new Vector3(7f,5f,7f);
@@ -71,18 +66,14 @@ public class PlayerScript : MonoBehaviour {
 	void rotatePlayer(float mouseX, float mouseY){
 		//we rotate on the horzontal axis
 		transform.Rotate(0,mouseX,0);
-
-		//fpsCam.transform.Rotate(0,mouseX,0);
 		//we rotate on the vertical axis
-
-
 		rotationValueY -= mouseY;
-		//animator.SetFloat("Angle", rotationValueY);
+		//we clamp the values so that the player can look up and down realistically
 		rotationValueY = Mathf.Clamp(rotationValueY, -60f, 50f);
 
 
 
-		//angle value to determine which top body animation to play
+		//angle value to determine which top body animation to play(looking up down or straight)
 		float animAngle = 0;
 
 		if (fpsCam.transform.rotation.eulerAngles.x <= 90){
@@ -91,27 +82,15 @@ public class PlayerScript : MonoBehaviour {
 		else{
 			animAngle = 360 -fpsCam.transform.rotation.eulerAngles.x;
 		}
-		 
-	//	print(animAngle);
+		//we set the parameter
 		animator.SetFloat("Angle", animAngle);
 
 
-
-
-
-		//print(rotationValueY);
+		//we transform the camera to move with the mouse
 		fpsCam.transform.localRotation = Quaternion.Euler(rotationValueY,0,0);
-		//added in some alterations so that the bullet goes where the crosshair is pointing
-		bulletSpawn.localRotation = Quaternion.Euler(rotationValueY+3,1.7f,0);
-		bulletSpawn.LookAt(crosshair.transform.position);
-		//bulletSpawn.LookAt(fpsCam.transform.forward);
-		//gun.rotation = fpsCam.transform.rotation;
-		//rightArm.rotation = fpsCam.transform.rotation;
-		//leftArm.rotation = fpsCam.transform.rotation;
-		//chaseScript.rotateCamera(mouseX);
-
 	}
 
+	//moves the player 
 	void movePlayer(float moveX, float moveZ){
 
 		//we calculate in the gravity for the jump
@@ -123,6 +102,7 @@ public class PlayerScript : MonoBehaviour {
 		
 		//we make our new vextor with all 3d velocities added
 		move = new Vector3(speedX,jumpingVelocity,speedZ);
+		//we adjust the clipping plane of the fps cam so that we dont see the players head while running
 		if (speedZ > 0){
 			fpsCam.nearClipPlane = 0.3f;
 		}
@@ -146,30 +126,12 @@ public class PlayerScript : MonoBehaviour {
 		//we check if the player is trying to jump while on the floor, check for button press first as this will allow less checks on for the grounded flag
 
 
-		//print("H " + Input.GetAxis("Horizontal"));
-		//print("V " + Input.GetAxis("Vertical"));
-
-		if (Input.GetAxis("Vertical") > 0){
-			//chaseScript.moveForward();
-			//print("moving fwd");
-
-		}
-		else if (Input.GetAxis("Vertical") < 0){
-		//	chaseScript.moveBackward();
-			
-		}
-		else{
-			//print("stopping");
-			//chaseScript.haltMovement();
-		}
-
 
 		if(Input.GetButtonDown("Jump") && controller.isGrounded){
 			jumpingVelocity = charSpeed.y;
-			//jumping = true;
 
 		}
-
+		//we determine jumping for the animation
 		if(controller.isGrounded){
 			animator.SetBool("Jumping", false);
 		}
@@ -178,14 +140,9 @@ public class PlayerScript : MonoBehaviour {
 		}
 		animator.SetFloat("Speed", movementDirection.magnitude);
 	}
+
 	//updates once per physics loop
 	void FixedUpdate(){
-		//we get the key movement of the player on the hor and ver axis
-		//float moveX = Input.GetAxis("Horizontal");
-		//float moveZ = Input.GetAxis("Vertical");
-		//we get the mouse movement of the player
-		//float mouseX = Input.GetAxis("Mouse X");
-		//float mouseY = Input.GetAxis("Mouse Y");
 
 		//we calculate the rotation for the mouse movement
 		float rotationX = mouseDirection.x * mouseSpeed.x;
@@ -199,10 +156,6 @@ public class PlayerScript : MonoBehaviour {
 
 		//we now send this information through to the character controller
 		controller.Move(move * Time.deltaTime);
-
-
-
-
 	}
 
 

@@ -9,17 +9,17 @@ public class ChaseCamUI : MonoBehaviour {
 	public Text height;
 	public Text distance;
 
-
+	//input fields
 	public InputField distanceInput;
 	public InputField heightInput;
 	
-	
+	//default display
 	private string defaultH = "Height: ";
 	private string defaultR = "Distance: ";
 
-	
+	//camera we are working with
 	public Camera chaseCam;
-	
+	//cameras script
 	private ChaseCam chaseScript;
 
 	

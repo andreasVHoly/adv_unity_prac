@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 public class KeyListener : MonoBehaviour {
 
@@ -11,6 +12,7 @@ public class KeyListener : MonoBehaviour {
 	private OrbitCamUI orbitCamUI;
 	private ChaseCamUI chaseCamUI;
 
+	//for camera UI
 	private bool orbitListen1, orbitListen2, chaseListen1, chaseListen2;
 	
 
@@ -30,54 +32,65 @@ public class KeyListener : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+		//to cycle the cameras
 		if (Input.GetKeyDown(KeyCode.C)){
 			camCycle.next();
 		}
-
+		//to exit the game
 		if(Input.GetKeyDown(KeyCode.Escape)){
 			Application.Quit();
 		}
 
 
-		//orbit camera input
+		//orbit camera input for radius
 		if (Input.GetKeyDown(KeyCode.Alpha1) && camCycle.counter == 0 && !orbitListen2){
-			orbitCamUI.radiusInput.gameObject.SetActive(true);
-			orbitCamUI.radiusInput.ActivateInputField();
+			//activate the input field
+			activateField(orbitCamUI.radiusInput);
 			orbitListen1 = true;
-			soundManager.playUISound();
 		}
-
+		//orbit camera input for height
 		if (Input.GetKeyDown(KeyCode.Alpha2) && camCycle.counter == 0 && !orbitListen1){
-			orbitCamUI.heightInput.gameObject.SetActive(true);
-			orbitCamUI.heightInput.ActivateInputField();
+			//activate the input field
+			activateField(orbitCamUI.heightInput);
 			orbitListen2 = true;
-			soundManager.playUISound();
 		}
 
 
-		//chase camera input
+		//chase camera input for distance
 		if (Input.GetKeyDown(KeyCode.Alpha1) && camCycle.counter == 1 && !chaseListen2){
-			chaseCamUI.distanceInput.gameObject.SetActive(true);
-			chaseCamUI.distanceInput.ActivateInputField();
+			//activate the input field
+			activateField(chaseCamUI.distanceInput);
 			chaseListen1 = true;
-			soundManager.playUISound();
 		}
-		
+		//chase camera input for height
 		if (Input.GetKeyDown(KeyCode.Alpha2) && camCycle.counter == 1 && !chaseListen1){
-			chaseCamUI.heightInput.gameObject.SetActive(true);
-			chaseCamUI.heightInput.ActivateInputField();
+			//activate the input field
+			activateField(chaseCamUI.heightInput);
 			chaseListen2 = true;
-			soundManager.playUISound();
 		}
 
 
 
 	}
 
+
+	void activateField(InputField input){
+		input.gameObject.SetActive(true);
+		input.ActivateInputField();
+		//play the UI sound
+		soundManager.playUISound();
+	}
+
+
 	void OnGUI(){
+		//to get the event of pressing enter
+		//can only be captured in the ongui function
 		Event keycheck = Event.current;
+
+		//after we get input we update the camera values and hide the input fields again
 		//chase camera
 		if (chaseListen1 && keycheck.keyCode == KeyCode.Return){
+
 			chaseCamUI.updateDistance();
 			chaseCamUI.distanceInput.DeactivateInputField();
 			chaseCamUI.distanceInput.gameObject.SetActive(false);

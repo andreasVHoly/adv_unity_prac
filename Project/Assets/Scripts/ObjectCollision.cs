@@ -3,10 +3,10 @@ using System.Collections;
 
 public class ObjectCollision : MonoBehaviour {
 
-
+	//force we apply to the object
 	public float force;
 
-
+	//so that we move moveable objects that we collide with
 	void OnControllerColliderHit(ControllerColliderHit hit){
 		Rigidbody rbody = hit.collider.attachedRigidbody;
 
@@ -16,8 +16,6 @@ public class ObjectCollision : MonoBehaviour {
 
 
 			rbody.velocity = new Vector3(hit.moveDirection.x, 0, hit.moveDirection.z) * force;
-			//Vector3 direction = rbody.transform.position - gameObject.transform.position;
-			//rbody.AddForceAtPosition(direction.normalized, transform.position);
 		}
 
 
